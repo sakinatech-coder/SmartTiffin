@@ -261,3 +261,27 @@ nav a{
   font-size:18px;
   line-height:28px;
 }
+.about{
+  padding:70px 40px;
+  background:#fff8ee;
+  text-align:center;
+}
+
+.about h2{color:#0b7a43;font-size:40px;}
+.about p{color:#555;margin:15px 0 30px;}
+
+.about-box{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+}
+
+.about-box div{
+  background:#fff;
+  padding:20px;
+  border-radius:15px;
+  width:140px;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
+.about-box h3{color:#ff8a00;font-size:28px;}
