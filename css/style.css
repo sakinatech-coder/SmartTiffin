@@ -223,3 +223,37 @@ nav a{
   line-height:30px;
   color:#555;
 }
+/* Sections */
+.about,
+.providers,
+.plans,
+.contact{
+  padding:70px 50px;
+  text-align:center;
+}
+
+.about{ background:#fff; }
+.providers{ background:#f8f5ee; }
+.plans{ background:#fff; }
+.contact{ background:#0b7a43; color:#fff; }
+
+.about h2,
+.providers h2,
+.plans h2,
+.contact h2{
+  font-size:36px;
+  margin-bottom:20px;
+  color:#0b7a43;
+}
+
+.contact h2{
+  color:#fff;
+}
+
+.about p,
+.providers p,
+.plans p,
+.contact p{
+  font-size:18px;
+  line-height:28px;
+}
