@@ -1,2 +1,19 @@
-# SmartTiffin
-Smart Tiffin is a homemade food delivery web application that connects customers with local tiffin providers. Built using HTML, CSS, JavaScript, PHP, and MySQL
+# 🍱 Smart Tiffin
+
+Smart Tiffin is a homemade food ordering website.
+
+## Pages
+- Home (index.html)
+- Login
+- Register
+- Menu
+- Customer
+- Admin
+
+## Technologies
+- HTML
+- CSS
+- JavaScript
+- SQL
+
+Made by Sakina
