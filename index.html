@@ -6,7 +6,6 @@
   <title>Smart Tiffin</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header class="navbar">
@@ -18,58 +17,11 @@
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#providers">Tiffin Providers</a>
+    <a href="#providers">Providers</a>
     <a href="#plans">Plans</a>
     <a href="#contact">Contact</a>
     <a href="login.html" class="login">Login</a>
-    <a href="signup.html" class="signup">Sign Up</a>
-  </nav>
-</header>
-<section class="hero" id="home">
-  <div class="left">
-
-    <h1>Good Food <span>Brighter Days!</span></h1>
-
-    <p>Fresh Homemade Meals from Local Tiffin Providers Near You.</p>
-
-    <div class="search-box">
-      <input type="text" id="location" placeholder="Enter your location">
-
-      <select id="meal">
-        <option>Veg</option>
-        <option>Non-Veg</option>
-        <option>Healthy</option>
-      </select>
-
-      <button onclick="searchTiffin()">Search</button>
-    </div>
-
-  </div>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Tiffin</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<header class="navbar">
-  <div class="logo">
-    <h2>🍱 Smart Tiffin</h2>
-    <p>Homemade Food, Happier You!</p>
-  </div>
-
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#providers">Tiffin Providers</a>
-    <a href="#plans">Plans</a>
-    <a href="#contact">Contact</a>
-    <a href="login.html" class="login">Login</a>
-    <a href="signup.html" class="signup">Sign Up</a>
+    <a href="register.html" class="signup">Sign Up</a>
   </nav>
 </header>
 
@@ -79,15 +31,13 @@
     <p>Fresh Homemade Meals from Local Tiffin Providers Near You.</p>
 
     <div class="search-box">
-      <input type="text" id="location" placeholder="Enter your location">
-
-      <select id="meal">
+      <input type="text" placeholder="Enter your location">
+      <select>
         <option>Veg</option>
         <option>Non-Veg</option>
         <option>Healthy</option>
       </select>
-
-      <button onclick="searchTiffin()">Search</button>
+      <button>Search</button>
     </div>
   </div>
 
@@ -109,28 +59,26 @@
   <h2>Our Tiffin Providers</h2>
 
   <div class="provider-grid">
-
     <div class="card">
-      <img src="tiffin.png" alt="Classic Veg">
+      <img src="veg.jpg" alt="Veg">
       <h3>Classic Veg</h3>
       <p>₹99 / Meal</p>
-      <button onclick="window.location.href='login.html'">Order Now</button>
+      <button>Order Now</button>
     </div>
 
     <div class="card">
-      <img src="tiffin.png" alt="Punjabi Special">
-      <h3>Punjabi Special</h3>
-      <p>₹149 / Meal</p>
-      <button onclick="window.location.href='login.html'">Order Now</button>
+      <img src="paneer.jpg" alt="Paneer">
+      <h3>Paneer Meal</h3>
+      <p>₹120 / Meal</p>
+      <button>Order Now</button>
     </div>
 
     <div class="card">
-      <img src="tiffin.png" alt="Healthy Diet">
-      <h3>Healthy Diet</h3>
-      <p>₹129 / Meal</p>
-      <button onclick="window.location.href='login.html'">Order Now</button>
+      <img src="thali.jpg" alt="Thali">
+      <h3>Special Thali</h3>
+      <p>₹150 / Meal</p>
+      <button>Order Now</button>
     </div>
-
   </div>
 </section>
 
@@ -142,28 +90,24 @@
       <h3>Daily</h3>
       <h1>₹99</h1>
       <p>1 Lunch + Dinner</p>
-      <button>Select</button>
     </div>
 
     <div class="plan-card popular">
       <h3>Weekly</h3>
       <h1>₹649</h1>
       <p>7 Days Meal Plan</p>
-      <button>Select</button>
     </div>
 
     <div class="plan-card">
       <h3>Monthly</h3>
       <h1>₹2499</h1>
       <p>30 Days Meal Plan</p>
-      <button>Select</button>
     </div>
   </div>
 </section>
 
 <section id="contact" class="contact">
   <h2>Contact Us</h2>
-  <p>We'd love to hear from you!</p>
 
   <div class="contact-box">
     <input type="text" placeholder="Your Name">
@@ -171,27 +115,10 @@
     <textarea placeholder="Your Message"></textarea>
     <button>Send Message</button>
   </div>
-
-  <div class="contact-info">
-    <p>📧 smarttiffin@gmail.com</p>
-    <p>📞 +91 98765 43210</p>
-    <p>📍 Garhshankar, Punjab</p>
-  </div>
 </section>
 
 <footer class="footer">
-  <h3>🍱 Smart Tiffin</h3>
-  <p>Homemade Food, Happier You!</p>
-
-  <div class="footer-links">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#providers">Providers</a>
-    <a href="#plans">Plans</a>
-    <a href="#contact">Contact</a>
-  </div>
-
-  <p class="copy">© 2026 Smart Tiffin. All Rights Reserved.</p>
+  <p>© 2026 Smart Tiffin. All Rights Reserved.</p>
 </footer>
 
 <script src="js/script.js"></script>
