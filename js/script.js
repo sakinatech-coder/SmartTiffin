@@ -1,13 +1,32 @@
-// Smart Tiffin JavaScript
+// Smart Tiffin Website
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Smart Tiffin Loaded");
+// Mobile Menu
+const menu = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav-links");
+
+if (menu) {
+  menu.onclick = () => {
+    nav.classList.toggle("active");
+  };
+}
+
+// Active Navbar Link
+const links = document.querySelectorAll(".nav-links a");
+
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    links.forEach(i => i.classList.remove("active"));
+    link.classList.add("active");
+
+    if (nav) nav.classList.remove("active");
+  });
 });
 
-function loginSuccess() {
-    alert("Welcome Back! Login Successful.");
-}
-
-function signupSuccess() {
-    alert("Account Created Successfully!");
-}
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
+  });
+});
