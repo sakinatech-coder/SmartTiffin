@@ -56,7 +56,7 @@ nav a{
   align-items:center;
   justify-content:space-between;
   padding:60px 50px;
-  background:url("../images/bg-food.jpg") center/cover;
+  background:url("../bg-food.jpg") center center/cover no-repeat;
   min-height:85vh;
 }
 
