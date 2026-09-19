@@ -204,3 +204,22 @@ nav a{
   color:#0b7a43;
   text-decoration:none;
 }
+.about{
+  padding:70px 50px;
+  background:#fff;
+  text-align:center;
+}
+
+.about h2{
+  font-size:36px;
+  color:#0b7a43;
+  margin-bottom:20px;
+}
+
+.about p{
+  max-width:700px;
+  margin:auto;
+  font-size:18px;
+  line-height:30px;
+  color:#555;
+}
