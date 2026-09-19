@@ -331,3 +331,47 @@ nav a{
   background:#0b7a43;
   color:#fff;
 }
+.plans{
+  padding:70px 40px;
+  background:#fff;
+  text-align:center;
+}
+
+.plan-grid{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.plan-card{
+  width:230px;
+  background:#fff8ee;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 5px 12px rgba(0,0,0,.08);
+}
+
+.popular{
+  background:#0b7a43;
+  color:#fff;
+}
+
+.plan-card h1{
+  color:#ff8a00;
+  margin:15px 0;
+}
+
+.popular h1{
+  color:#fff;
+}
+
+.plan-card button{
+  margin-top:15px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#ff8a00;
+  color:#fff;
+}
