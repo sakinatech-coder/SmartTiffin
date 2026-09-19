@@ -284,4 +284,50 @@ nav a{
   box-shadow:0 4px 12px rgba(0,0,0,.1);
 }
 
-.about-box h3{color:#ff8a00;font-size:28px;}
+.about-box h3{color:#ff8a00;font-size:28px;
+}
+.providers{
+  padding:70px 40px;
+  background:#f8f5ee;
+  text-align:center;
+}
+
+.provider-grid{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.card{
+  width:250px;
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);
+}
+
+.card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+}
+
+.card h3{
+  margin:15px 0 8px;
+}
+
+.card p{
+  color:#ff8a00;
+  font-weight:bold;
+}
+
+.card button{
+  margin:15px;
+  width:calc(100% - 30px);
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#0b7a43;
+  color:#fff;
+}
