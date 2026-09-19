@@ -20,14 +20,8 @@ body{
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-.logo h2{
-  color:#0b7a43;
-}
-
-.logo p{
-  font-size:12px;
-  color:#fff;
-}
+.logo h2{color:#0b7a43;}
+.logo p{font-size:12px;color:#666;}
 
 nav a{
   text-decoration:none;
@@ -36,19 +30,14 @@ nav a{
   font-weight:bold;
 }
 
-.login{
-  background:#0b7a43;
+.login,.signup{
   color:#fff;
   padding:8px 18px;
   border-radius:6px;
 }
 
-.signup{
-  background:#ff8a00;
-  color:#fff;
-  padding:8px 18px;
-  border-radius:6px;
-}
+.login{background:#0b7a43;}
+.signup{background:#ff8a00;}
 
 /* Hero */
 .hero{
@@ -57,26 +46,12 @@ nav a{
   justify-content:space-between;
   padding:60px 50px;
   min-height:85vh;
-
-  background-image:url("../bg-food.jpg");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  background:url("../bg-food.jpg") center/cover no-repeat;
 }
 
-.left{
-  width:50%;
-}
-
-.left h1{
-  font-size:58px;
-  color:#fff;
-}
-
-.left span{
-  color:#ff8a00;
-}
-
+.left{width:50%;}
+.left h1{font-size:58px;color:#fff;}
+.left span{color:#ff8a00;}
 .left p{
   margin:20px 0;
   font-size:18px;
@@ -90,7 +65,7 @@ nav a{
   background:#fff;
   border-radius:50px;
   overflow:hidden;
-  margin:25px 0;
+  margin-top:25px;
 }
 
 .search-box input,
@@ -98,10 +73,6 @@ nav a{
   border:none;
   padding:15px;
   outline:none;
-}
-
-.search-box input{
-  width:250px;
 }
 
 .search-box button{
@@ -112,180 +83,46 @@ nav a{
   cursor:pointer;
 }
 
-/* Features */
-.features{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:30px;
-}
+.right{width:42%;}
 
-.features div{
-  background:#fff;
-  padding:14px;
-  border-radius:12px;
-  text-align:center;
-  font-weight:bold;
-}
-
-/* Right Image */
-.right{
-  width:42%;
-}
-
-.right img{
-  width:100%;
-  border-radius:20px;
-}
-
-/* Login Page */
-.login-page{
-  display:flex;
-  min-height:100vh;
-  background:url("../images/bg-food.jpg") center/cover;
-  align-items:center;
-  justify-content:space-between;
-  padding:60px;
-}
-
-.login-left{
-  width:50%;
-  color:#fff;
-}
-
-.login-left h1{
-  font-size:55px;
-  margin-bottom:15px;
-}
-
-.login-left p{
-  font-size:20px;
-  line-height:30px;
-}
-
-.login-box{
-  width:360px;
-  background:rgba(255,255,255,.95);
-  padding:30px;
-  border-radius:20px;
-}
-
-.login-box h2{
-  text-align:center;
-  color:#0b7a43;
-  margin-bottom:20px;
-}
-
-.login-box input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:1px solid #ccc;
-  border-radius:8px;
-}
-
-.login-btn{
-  width:100%;
-  padding:12px;
-  background:#0b7a43;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  margin:15px 0;
-  cursor:pointer;
-}
-
-.login-box button{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ddd;
-  background:#fff;
-}
-
-.login-box a{
-  color:#0b7a43;
-  text-decoration:none;
-}
-.about{
-  padding:70px 50px;
-  background:#fff;
-  text-align:center;
-}
-
-.about h2{
-  font-size:36px;
-  color:#0b7a43;
-  margin-bottom:20px;
-}
-
-.about p{
-  max-width:700px;
-  margin:auto;
-  font-size:18px;
-  line-height:30px;
-  color:#555;
-}
-/* Sections */
-.about,
-.providers,
-.plans,
-.contact{
-  padding:70px 50px;
-  text-align:center;
-}
-
-.about{ background:#fff; }
-.providers{ background:#f8f5ee; }
-.plans{ background:#fff; }
-.contact{ background:#0b7a43; color:#fff; }
-
-.about h2,
-.providers h2,
-.plans h2,
-.contact h2{
-  font-size:36px;
-  margin-bottom:20px;
-  color:#0b7a43;
-}
-
-.contact h2{
-  color:#fff;
-}
-
-.about p,
-.providers p,
-.plans p,
-.contact p{
-  font-size:18px;
-  line-height:28px;
-}
+/* About */
 .about{
   padding:70px 40px;
   background:#fff8ee;
   text-align:center;
 }
 
-.about h2{color:#0b7a43;font-size:40px;}
-.about p{color:#555;margin:15px 0 30px;}
+.about h2{
+  color:#0b7a43;
+  font-size:40px;
+}
+
+.about p{
+  color:#555;
+  margin:15px 0 30px;
+}
 
 .about-box{
   display:flex;
   justify-content:center;
   gap:25px;
+  flex-wrap:wrap;
 }
 
 .about-box div{
   background:#fff;
   padding:20px;
-  border-radius:15px;
   width:140px;
+  border-radius:15px;
   box-shadow:0 4px 12px rgba(0,0,0,.1);
 }
 
-.about-box h3{color:#ff8a00;font-size:28px;
+.about-box h3{
+  color:#ff8a00;
+  font-size:28px;
 }
+
+/* Providers */
 .providers{
   padding:70px 40px;
   background:#f8f5ee;
@@ -300,37 +137,34 @@ nav a{
 }
 
 .card{
-  width:250px;
+  width:240px;
   background:#fff;
-  border-radius:18px;
+  border-radius:15px;
   overflow:hidden;
-  box-shadow:0 6px 15px rgba(0,0,0,.1);
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
 }
 
 .card img{
   width:100%;
-  height:170px;
+  height:160px;
   object-fit:cover;
 }
 
-.card h3{
-  margin:15px 0 8px;
-}
-
-.card p{
-  color:#ff8a00;
-  font-weight:bold;
-}
+.card h3{margin:15px 0 8px;}
+.card p{color:#ff8a00;font-weight:bold;}
 
 .card button{
+  width:85%;
   margin:15px;
-  width:calc(100% - 30px);
   padding:10px;
   border:none;
   border-radius:8px;
   background:#0b7a43;
   color:#fff;
+  cursor:pointer;
 }
+
+/* Plans */
 .plans{
   padding:70px 40px;
   background:#fff;
@@ -362,19 +196,19 @@ nav a{
   margin:15px 0;
 }
 
-.popular h1{
-  color:#fff;
-}
+.popular h1{color:#fff;}
 
 .plan-card button{
-  margin-top:15px;
   width:100%;
+  margin-top:15px;
   padding:10px;
   border:none;
   border-radius:8px;
   background:#ff8a00;
   color:#fff;
 }
+
+/* Contact */
 .contact{
   padding:70px 40px;
   background:#0b7a43;
@@ -398,9 +232,7 @@ nav a{
   outline:none;
 }
 
-.contact-box textarea{
-  height:120px;
-}
+.contact-box textarea{height:120px;}
 
 .contact-box button{
   background:#ff8a00;
@@ -408,12 +240,10 @@ nav a{
   border:none;
   padding:14px;
   border-radius:10px;
-  font-weight:bold;
+  cursor:pointer;
 }
 
-.contact-info p{
-  margin:8px 0;
-}
+/* Footer */
 .footer{
   background:#222;
   color:#fff;
@@ -421,10 +251,7 @@ nav a{
   padding:30px 20px;
 }
 
-.footer h3{
-  color:#ff8a00;
-  margin-bottom:10px;
-}
+.footer h3{color:#ff8a00;}
 
 .footer-links{
   margin:15px 0;
@@ -439,4 +266,43 @@ nav a{
 .copy{
   font-size:14px;
   color:#bbb;
+}
+
+/* Login Page */
+.login-page{
+  display:flex;
+  min-height:100vh;
+  background:url("../bg-food.jpg") center/cover no-repeat;
+  align-items:center;
+  justify-content:space-between;
+  padding:60px;
+}
+
+.login-left{
+  width:50%;
+  color:#fff;
+}
+
+.login-box{
+  width:360px;
+  background:rgba(255,255,255,.95);
+  padding:30px;
+  border-radius:20px;
+}
+
+.login-box input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+.login-btn{
+  width:100%;
+  padding:12px;
+  background:#0b7a43;
+  color:#fff;
+  border:none;
+  border-radius:8px;
 }
