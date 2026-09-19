@@ -414,3 +414,29 @@ nav a{
 .contact-info p{
   margin:8px 0;
 }
+.footer{
+  background:#222;
+  color:#fff;
+  text-align:center;
+  padding:30px 20px;
+}
+
+.footer h3{
+  color:#ff8a00;
+  margin-bottom:10px;
+}
+
+.footer-links{
+  margin:15px 0;
+}
+
+.footer-links a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+.copy{
+  font-size:14px;
+  color:#bbb;
+}
