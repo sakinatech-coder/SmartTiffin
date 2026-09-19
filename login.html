@@ -8,35 +8,28 @@
 </head>
 <body>
 
-<div class="login-page">
+<section class="login-page">
 
   <div class="login-left">
     <h1>Welcome Back!</h1>
-    <p>Healthy homemade meals are waiting for you.</p>
+    <p>Login to order your favourite homemade tiffin.</p>
   </div>
 
   <div class="login-box">
-    <h2>🍱 Smart Tiffin</h2>
+    <h2>Login</h2>
 
-    <input type="email" placeholder="Email Address" required>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
 
-    <input type="password" placeholder="Password" required>
+    <button class="login-btn" onclick="loginUser()">Login</button>
 
-    <a href="#">Forgot Password?</a>
-
-    <button class="login-btn" onclick="loginSuccess()">Login</button>
-
-    <p>OR</p>
-
-    <button>Continue with Google</button>
-    <button>Continue with Phone</button>
-
-    <p>Don't have an account?
+    <p style="text-align:center;">
+      Don't have an account?
       <a href="signup.html">Sign Up</a>
     </p>
   </div>
 
-</div>
+</section>
 
 <script src="js/script.js"></script>
 </body>
