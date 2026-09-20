@@ -526,3 +526,83 @@ if (registerForm) {
     );
 
 }
+// =========================================================
+// SIGN UP PAGE
+// =========================================================
+
+const signupForm =
+    document.getElementById("signupForm");
+
+const toggleSignupPassword =
+    document.getElementById("toggleSignupPassword");
+
+const signupPassword =
+    document.getElementById("signupPassword");
+
+if (toggleSignupPassword && signupPassword) {
+
+    toggleSignupPassword.addEventListener(
+        "click",
+        function () {
+
+            if (signupPassword.type === "password") {
+
+                signupPassword.type = "text";
+
+                toggleSignupPassword.textContent = "Hide";
+
+            } else {
+
+                signupPassword.type = "password";
+
+                toggleSignupPassword.textContent = "Show";
+
+            }
+
+        }
+    );
+
+}
+
+if (signupForm) {
+
+    signupForm.addEventListener(
+        "submit",
+        function (e) {
+
+            e.preventDefault();
+
+            const name =
+                document
+                .getElementById("signupName")
+                .value
+                .trim();
+
+            const role =
+                document
+                .getElementById("signupRole")
+                .value;
+
+            if (!role) {
+
+                alert(
+                    "Please select your account type."
+                );
+
+                return;
+
+            }
+
+            alert(
+                "Account created successfully! 🎉\n\n" +
+                "Welcome, " +
+                name +
+                "!"
+            );
+
+            window.location.href = "login.html";
+
+        }
+    );
+
+}
