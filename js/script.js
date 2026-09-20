@@ -606,3 +606,50 @@ if (signupForm) {
     );
 
 }
+// =========================================================
+// ADMIN PAGE
+// =========================================================
+
+const adminFoodForm =
+    document.getElementById("adminFoodForm");
+
+if (adminFoodForm) {
+
+    adminFoodForm.addEventListener(
+        "submit",
+        function (e) {
+
+            e.preventDefault();
+
+            const foodName =
+                document.getElementById("foodName")
+                .value
+                .trim();
+
+            const price =
+                document.getElementById("foodPrice")
+                .value;
+
+            if (!foodName || !price) {
+
+                alert(
+                    "Please enter food name and price."
+                );
+
+                return;
+
+            }
+
+            alert(
+                "Meal added successfully! 🍱\n\n" +
+                foodName +
+                " — ₹" +
+                price
+            );
+
+            adminFoodForm.reset();
+
+        }
+    );
+
+}
