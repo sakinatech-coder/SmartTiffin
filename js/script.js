@@ -391,3 +391,59 @@ if (contactForm) {
 console.log(
     "Smart Tiffin website loaded successfully 🍱"
 );
+// =========================================================
+// LOGIN PAGE
+// =========================================================
+
+const loginForm = document.getElementById("loginForm");
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+const loginPassword =
+    document.getElementById("loginPassword");
+
+if (togglePassword && loginPassword) {
+
+    togglePassword.addEventListener("click", function () {
+
+        if (loginPassword.type === "password") {
+
+            loginPassword.type = "text";
+            togglePassword.textContent = "Hide";
+
+        } else {
+
+            loginPassword.type = "password";
+            togglePassword.textContent = "Show";
+
+        }
+
+    });
+
+}
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const email =
+            document.getElementById("loginEmail").value.trim();
+
+        if (!email) {
+            alert("Please enter your email.");
+            return;
+        }
+
+        alert(
+            "Login successful! 🍱\n\n" +
+            "Welcome to Smart Tiffin."
+        );
+
+        window.location.href = "customer.html";
+
+    });
+
+}
