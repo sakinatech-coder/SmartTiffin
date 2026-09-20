@@ -1,35 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin | Smart Tiffin</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Smart Tiffin</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<header class="navbar">
-  <h2>🍱 Smart Tiffin Admin</h2>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-  </nav>
-</header>
+    <!-- NAVBAR -->
 
-<section class="login-page">
-  <div class="login-box">
-    <h2>Admin Panel</h2>
+    <header class="navbar">
 
-    <form>
-      <input type="text" placeholder="Food Name" required>
-      <input type="number" placeholder="Price" required>
-      <textarea placeholder="Description"></textarea>
+        <a href="admin.html" class="logo">
 
-      <button type="submit">Add Item</button>
-    </form>
-  </div>
-</section>
+            <div class="logo-icon">
+                🍱
+            </div>
 
-<script src="js/script.js"></script>
+            <div class="logo-text">
+                <h2>Smart Tiffin</h2>
+                <p>Admin Dashboard</p>
+            </div>
+
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="menu.html">
+                Menu
+            </a>
+
+            <a href="admin.html" class="signup">
+                Admin
+            </a>
+
+            <a href="login.html" class="login">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ADMIN DASHBOARD -->
+
+    <main class="admin-page">
+
+        <div class="admin-header">
+
+            <div>
+
+                <div class="small-title">
+                    Smart Tiffin Management
+                </div>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    Manage meals, prices and tiffin items easily.
+                </p>
+
+            </div>
+
+            <div class="admin-status">
+                🟢 Admin Online
+            </div>
+
+        </div>
+
+
+        <!-- STAT CARDS -->
+
+        <div class="admin-stats">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    🍱
+                </div>
+
+                <div>
+                    <h3>100+</h3>
+                    <p>Total Meals</p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    👥
+                </div>
+
+                <div>
+                    <h3>50+</h3>
+                    <p>Providers</p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    📦
+                </div>
+
+                <div>
+                    <h3>250+</h3>
+                    <p>Orders</p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    ⭐
+                </div>
+
+                <div>
+                    <h3>4.9</h3>
+                    <p>Average Rating</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMIN CONTENT -->
+
+        <div class="admin-grid">
+
+
+            <!-- ADD FOOD -->
+
+            <section class="admin-card">
+
+                <h2>
+                    ➕ Add New Meal
+                </h2>
+
+                <p class="admin-card-subtitle">
+                    Add a new tiffin or meal to your menu.
+                </p>
+
+
+                <form id="adminFoodForm">
+
+                    <div class="admin-form-group">
+
+                        <label for="foodName">
+                            Food Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="foodName"
+                            placeholder="Example: Special Thali"
+                            required>
+
+                    </div>
+
+
+                    <div class="admin-form-row">
+
+                        <div class="admin-form-group">
+
+                            <label for="foodPrice">
+                                Price (₹)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="foodPrice"
+                                placeholder="150"
+                                min="1"
+                                required>
+
+                        </div>
+
+
+                        <div class="admin-form-group">
+
+                            <label for="foodCategory">
+                                Category
+                            </label>
+
+                            <select id="foodCategory" required>
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option>
+                                    Veg
+                                </option>
+
+                                <option>
+                                    Paneer
+                                </option>
+
+                                <option>
+                                    Thali
+                                </option>
+
+                                <option>
+                                    Healthy
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="foodDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="foodDescription"
+                            placeholder="Describe the meal..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="admin-add-btn">
+
+                        Add Meal →
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- MENU OVERVIEW -->
+
+            <section class="admin-card">
+
+                <h2>
+                    🍽️ Menu Overview
+                </h2>
+
+                <p class="admin-card-subtitle">
+                    Current popular meals.
+                </p>
+
+
+                <div class="admin-menu-item">
+
+                    <img
+                        src="veg.jpg"
+                        alt="Veg Tiffin">
+
+                    <div>
+
+                        <h3>
+                            Classic Veg Tiffin
+                        </h3>
+
+                        <p>
+                            2 Roti, Sabzi, Rice, Salad
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        ₹99
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-menu-item">
+
+                    <img
+                        src="paneer.png"
+                        alt="Paneer Meal">
+
+                    <div>
+
+                        <h3>
+                            Paneer Meal
+                        </h3>
+
+                        <p>
+                            Paneer, Roti, Rice
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        ₹120
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-menu-item">
+
+                    <img
+                        src="thali.png"
+                        alt="Special Thali">
+
+                    <div>
+
+                        <h3>
+                            Special Thali
+                        </h3>
+
+                        <p>
+                            Complete Homemade Meal
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        ₹150
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="menu.html"
+                    class="admin-view-btn">
+
+                    View Full Menu →
+
+                </a>
+
+            </section>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="admin-card admin-actions">
+
+            <h2>
+                ⚡ Quick Actions
+            </h2>
+
+            <div class="admin-action-grid">
+
+                <a href="menu.html">
+                    🍽️
+                    <span>Manage Menu</span>
+                </a>
+
+                <a href="customer.html">
+                    📦
+                    <span>View Orders</span>
+                </a>
+
+                <a href="index.html#contact">
+                    💬
+                    <span>Customer Messages</span>
+                </a>
+
+                <a href="index.html">
+                    🏠
+                    <span>View Website</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Smart Tiffin. Admin Panel.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>
