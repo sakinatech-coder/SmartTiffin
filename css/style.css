@@ -1690,3 +1690,26 @@ section {
         gap: 10px;
     }
 }
+/* =========================================================
+   REGISTER PAGE
+========================================================= */
+
+.terms-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+    color: #777;
+    font-size: 12px;
+    margin: 4px 0 20px;
+    line-height: 1.5;
+}
+
+.terms-check input {
+    margin-top: 3px;
+    accent-color: #0a8f3d;
+}
+
+.terms-check span {
+    flex: 1;
+}
