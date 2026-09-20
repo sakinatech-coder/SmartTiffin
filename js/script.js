@@ -4,51 +4,6 @@
 
 
 // =========================================================
-// MOBILE MENU
-// =========================================================
-
-const menu = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav-links");
-
-if (menu && nav) {
-
-    menu.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
-
-}
-
-
-// =========================================================
-// ACTIVE NAVBAR LINK
-// =========================================================
-
-const links = document.querySelectorAll(".nav-links a");
-
-if (links.length > 0) {
-
-    links.forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            links.forEach(item => {
-                item.classList.remove("active");
-            });
-
-            link.classList.add("active");
-
-            if (nav) {
-                nav.classList.remove("active");
-            }
-
-        });
-
-    });
-
-}
-
-
-// =========================================================
 // SMOOTH SCROLL
 // =========================================================
 
@@ -91,20 +46,14 @@ const quantityPrice = document.getElementById("quantityPrice");
 const totalPrice = document.getElementById("totalPrice");
 
 
-// Meal prices
-
 const mealPrices = {
 
     "Classic Veg Tiffin": 99,
-
     "Paneer Meal": 120,
-
     "Special Thali": 150
 
 };
 
-
-// Update order summary
 
 function updateOrderSummary() {
 
@@ -112,74 +61,45 @@ function updateOrderSummary() {
         return;
     }
 
-
     const selectedMeal = tiffin.value;
 
     const selectedQuantity =
         parseInt(quantity.value) || 1;
 
-
     const price =
         mealPrices[selectedMeal] || 0;
-
 
     const total =
         price * selectedQuantity;
 
 
-    // Meal name
-
     if (summaryMeal) {
-
         summaryMeal.textContent =
             selectedMeal || "Select a meal";
-
     }
-
-
-    // Quantity
 
     if (summaryQuantity) {
-
         summaryQuantity.textContent =
             "Quantity: " + selectedQuantity;
-
     }
-
-
-    // Meal price
 
     if (mealPrice) {
-
         mealPrice.textContent =
             "₹" + price;
-
     }
-
-
-    // Quantity
 
     if (quantityPrice) {
-
         quantityPrice.textContent =
             selectedQuantity;
-
     }
 
-
-    // Total
-
     if (totalPrice) {
-
         totalPrice.textContent =
             "₹" + total;
-
     }
 
 }
 
-
-// Run when meal changes
 
 if (tiffin) {
 
@@ -191,8 +111,6 @@ if (tiffin) {
 }
 
 
-// Run when quantity changes
-
 if (quantity) {
 
     quantity.addEventListener(
@@ -203,13 +121,11 @@ if (quantity) {
 }
 
 
-// Initial summary
-
 updateOrderSummary();
 
 
 // =========================================================
-// PREVENT PAST DELIVERY DATE
+// DELIVERY DATE
 // =========================================================
 
 const deliveryDate =
@@ -237,15 +153,16 @@ if (orderForm) {
 
             e.preventDefault();
 
-
             const name =
-                document.getElementById("fullName")?.value.trim();
+                document
+                .getElementById("fullName")
+                ?.value.trim();
 
             const selectedMeal =
                 tiffin?.value;
 
             const selectedQuantity =
-                quantity?.value || 1;
+                parseInt(quantity?.value) || 1;
 
 
             if (!name || !selectedMeal) {
@@ -263,7 +180,7 @@ if (orderForm) {
                 mealPrices[selectedMeal] || 0;
 
             const total =
-                price * parseInt(selectedQuantity);
+                price * selectedQuantity;
 
 
             alert(
@@ -299,10 +216,14 @@ if (searchBtn) {
         function () {
 
             const location =
-                document.getElementById("locationInput")?.value.trim();
+                document
+                .getElementById("locationInput")
+                ?.value.trim();
 
             const foodType =
-                document.getElementById("foodType")?.value;
+                document
+                .getElementById("foodType")
+                ?.value;
 
 
             if (!location) {
@@ -324,8 +245,6 @@ if (searchBtn) {
                 " 🍱"
             );
 
-
-            // Open menu page
 
             window.location.href = "menu.html";
 
@@ -350,11 +269,12 @@ if (contactForm) {
 
             e.preventDefault();
 
-
             const name =
-                contactForm.querySelector(
+                contactForm
+                .querySelector(
                     'input[name="name"]'
-                )?.value.trim();
+                )
+                ?.value.trim();
 
 
             if (!name) {
@@ -385,17 +305,11 @@ if (contactForm) {
 
 
 // =========================================================
-// CONSOLE MESSAGE
-// =========================================================
-
-console.log(
-    "Smart Tiffin website loaded successfully 🍱"
-);
-// =========================================================
 // LOGIN PAGE
 // =========================================================
 
-const loginForm = document.getElementById("loginForm");
+const loginForm =
+    document.getElementById("loginForm");
 
 const togglePassword =
     document.getElementById("togglePassword");
@@ -403,50 +317,74 @@ const togglePassword =
 const loginPassword =
     document.getElementById("loginPassword");
 
+
 if (togglePassword && loginPassword) {
 
-    togglePassword.addEventListener("click", function () {
+    togglePassword.addEventListener(
+        "click",
+        function () {
 
-        if (loginPassword.type === "password") {
+            if (loginPassword.type === "password") {
 
-            loginPassword.type = "text";
-            togglePassword.textContent = "Hide";
+                loginPassword.type = "text";
 
-        } else {
+                togglePassword.textContent = "Hide";
 
-            loginPassword.type = "password";
-            togglePassword.textContent = "Show";
+            } else {
+
+                loginPassword.type = "password";
+
+                togglePassword.textContent = "Show";
+
+            }
 
         }
-
-    });
+    );
 
 }
+
 
 if (loginForm) {
 
-    loginForm.addEventListener("submit", function (e) {
+    loginForm.addEventListener(
+        "submit",
+        function (e) {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        const email =
-            document.getElementById("loginEmail").value.trim();
+            const email =
+                document
+                .getElementById("loginEmail")
+                .value
+                .trim();
 
-        if (!email) {
-            alert("Please enter your email.");
-            return;
+
+            if (!email) {
+
+                alert(
+                    "Please enter your email."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Login successful! 🍱\n\n" +
+                "Welcome to Smart Tiffin."
+            );
+
+
+            window.location.href =
+                "customer.html";
+
         }
-
-        alert(
-            "Login successful! 🍱\n\n" +
-            "Welcome to Smart Tiffin."
-        );
-
-        window.location.href = "customer.html";
-
-    });
+    );
 
 }
+
+
 // =========================================================
 // REGISTER PAGE
 // =========================================================
@@ -455,13 +393,20 @@ const registerForm =
     document.getElementById("registerForm");
 
 const toggleRegisterPassword =
-    document.getElementById("toggleRegisterPassword");
+    document.getElementById(
+        "toggleRegisterPassword"
+    );
 
 const registerPassword =
-    document.getElementById("registerPassword");
+    document.getElementById(
+        "registerPassword"
+    );
 
 const confirmPassword =
-    document.getElementById("confirmPassword");
+    document.getElementById(
+        "confirmPassword"
+    );
+
 
 if (toggleRegisterPassword && registerPassword) {
 
@@ -472,12 +417,16 @@ if (toggleRegisterPassword && registerPassword) {
             if (registerPassword.type === "password") {
 
                 registerPassword.type = "text";
-                toggleRegisterPassword.textContent = "Hide";
+
+                toggleRegisterPassword.textContent =
+                    "Hide";
 
             } else {
 
                 registerPassword.type = "password";
-                toggleRegisterPassword.textContent = "Show";
+
+                toggleRegisterPassword.textContent =
+                    "Show";
 
             }
 
@@ -485,6 +434,7 @@ if (toggleRegisterPassword && registerPassword) {
     );
 
 }
+
 
 if (registerForm) {
 
@@ -495,13 +445,17 @@ if (registerForm) {
             e.preventDefault();
 
             const name =
-                document.getElementById("registerName").value.trim();
+                document
+                .getElementById("registerName")
+                .value
+                .trim();
 
             const password =
                 registerPassword.value;
 
             const confirm =
                 confirmPassword.value;
+
 
             if (password !== confirm) {
 
@@ -513,6 +467,7 @@ if (registerForm) {
 
             }
 
+
             alert(
                 "Account created successfully! 🎉\n\n" +
                 "Welcome to Smart Tiffin, " +
@@ -520,12 +475,16 @@ if (registerForm) {
                 "!"
             );
 
-            window.location.href = "login.html";
+
+            window.location.href =
+                "login.html";
 
         }
     );
 
 }
+
+
 // =========================================================
 // SIGN UP PAGE
 // =========================================================
@@ -534,10 +493,15 @@ const signupForm =
     document.getElementById("signupForm");
 
 const toggleSignupPassword =
-    document.getElementById("toggleSignupPassword");
+    document.getElementById(
+        "toggleSignupPassword"
+    );
 
 const signupPassword =
-    document.getElementById("signupPassword");
+    document.getElementById(
+        "signupPassword"
+    );
+
 
 if (toggleSignupPassword && signupPassword) {
 
@@ -549,13 +513,15 @@ if (toggleSignupPassword && signupPassword) {
 
                 signupPassword.type = "text";
 
-                toggleSignupPassword.textContent = "Hide";
+                toggleSignupPassword.textContent =
+                    "Hide";
 
             } else {
 
                 signupPassword.type = "password";
 
-                toggleSignupPassword.textContent = "Show";
+                toggleSignupPassword.textContent =
+                    "Show";
 
             }
 
@@ -563,6 +529,7 @@ if (toggleSignupPassword && signupPassword) {
     );
 
 }
+
 
 if (signupForm) {
 
@@ -583,6 +550,7 @@ if (signupForm) {
                 .getElementById("signupRole")
                 .value;
 
+
             if (!role) {
 
                 alert(
@@ -593,6 +561,7 @@ if (signupForm) {
 
             }
 
+
             alert(
                 "Account created successfully! 🎉\n\n" +
                 "Welcome, " +
@@ -600,18 +569,25 @@ if (signupForm) {
                 "!"
             );
 
-            window.location.href = "login.html";
+
+            window.location.href =
+                "login.html";
 
         }
     );
 
 }
+
+
 // =========================================================
 // ADMIN PAGE
 // =========================================================
 
 const adminFoodForm =
-    document.getElementById("adminFoodForm");
+    document.getElementById(
+        "adminFoodForm"
+    );
+
 
 if (adminFoodForm) {
 
@@ -622,13 +598,16 @@ if (adminFoodForm) {
             e.preventDefault();
 
             const foodName =
-                document.getElementById("foodName")
+                document
+                .getElementById("foodName")
                 .value
                 .trim();
 
             const price =
-                document.getElementById("foodPrice")
+                document
+                .getElementById("foodPrice")
                 .value;
+
 
             if (!foodName || !price) {
 
@@ -640,6 +619,7 @@ if (adminFoodForm) {
 
             }
 
+
             alert(
                 "Meal added successfully! 🍱\n\n" +
                 foodName +
@@ -647,9 +627,132 @@ if (adminFoodForm) {
                 price
             );
 
+
             adminFoodForm.reset();
 
         }
     );
 
 }
+
+
+// =========================================================
+// FOOD IMAGE GALLERY
+// =========================================================
+// Click the main food image to briefly show
+// the available food images.
+// =========================================================
+
+const foodGalleries =
+    document.querySelectorAll(
+        ".food-gallery"
+    );
+
+
+foodGalleries.forEach(gallery => {
+
+    const mainImage =
+        gallery.querySelector(
+            ".main-food-image"
+        );
+
+    const galleryImages =
+        gallery.querySelector(
+            ".gallery-images"
+        );
+
+    if (!mainImage || !galleryImages) {
+        return;
+    }
+
+
+    let hideTimer;
+
+
+    // Main image click
+
+    mainImage.addEventListener(
+        "click",
+        function () {
+
+            gallery.classList.add(
+                "show-gallery"
+            );
+
+
+            clearTimeout(hideTimer);
+
+
+            hideTimer = setTimeout(
+                function () {
+
+                    gallery.classList.remove(
+                        "show-gallery"
+                    );
+
+                },
+                4000
+            );
+
+        }
+    );
+
+
+    // Thumbnail click
+
+    const thumbnails =
+        galleryImages.querySelectorAll(
+            "img"
+        );
+
+
+    thumbnails.forEach(thumbnail => {
+
+        thumbnail.addEventListener(
+            "click",
+            function (e) {
+
+                e.stopPropagation();
+
+
+                mainImage.src =
+                    thumbnail.src;
+
+                mainImage.alt =
+                    thumbnail.alt;
+
+
+                gallery.classList.add(
+                    "show-gallery"
+                );
+
+
+                clearTimeout(hideTimer);
+
+
+                hideTimer = setTimeout(
+                    function () {
+
+                        gallery.classList.remove(
+                            "show-gallery"
+                        );
+
+                    },
+                    4000
+                );
+
+            }
+        );
+
+    });
+
+});
+
+
+// =========================================================
+// FINISH
+// =========================================================
+
+console.log(
+    "Smart Tiffin website loaded successfully 🍱"
+);
