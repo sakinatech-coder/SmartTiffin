@@ -447,3 +447,82 @@ if (loginForm) {
     });
 
 }
+// =========================================================
+// REGISTER PAGE
+// =========================================================
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const toggleRegisterPassword =
+    document.getElementById("toggleRegisterPassword");
+
+const registerPassword =
+    document.getElementById("registerPassword");
+
+const confirmPassword =
+    document.getElementById("confirmPassword");
+
+if (toggleRegisterPassword && registerPassword) {
+
+    toggleRegisterPassword.addEventListener(
+        "click",
+        function () {
+
+            if (registerPassword.type === "password") {
+
+                registerPassword.type = "text";
+                toggleRegisterPassword.textContent = "Hide";
+
+            } else {
+
+                registerPassword.type = "password";
+                toggleRegisterPassword.textContent = "Show";
+
+            }
+
+        }
+    );
+
+}
+
+if (registerForm) {
+
+    registerForm.addEventListener(
+        "submit",
+        function (e) {
+
+            e.preventDefault();
+
+            const name =
+                document.getElementById("registerName").value.trim();
+
+            const password =
+                registerPassword.value;
+
+            const confirm =
+                confirmPassword.value;
+
+            if (password !== confirm) {
+
+                alert(
+                    "Passwords do not match."
+                );
+
+                return;
+
+            }
+
+            alert(
+                "Account created successfully! 🎉\n\n" +
+                "Welcome to Smart Tiffin, " +
+                name +
+                "!"
+            );
+
+            window.location.href = "login.html";
+
+        }
+    );
+
+}
