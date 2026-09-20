@@ -1,130 +1,867 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Tiffin</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Tiffin | Homemade Food, Happier You!</title>
+
+    <meta name="description"
+        content="Smart Tiffin connects customers with trusted local tiffin providers for fresh, homemade and delicious meals.">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<header class="navbar">
-  <div class="logo">
-    <h2>🍱 Smart Tiffin</h2>
-    <p>Homemade Food, Happier You!</p>
-  </div>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#providers">Providers</a>
-    <a href="#plans">Plans</a>
-    <a href="#contact">Contact</a>
-    <a href="login.html" class="login">Login</a>
-    <a href="register.html" class="signup">Sign Up</a>
-  </nav>
-</header>
+    <header class="navbar">
 
-<section class="hero" id="home">
-  <div class="left">
-    <h1>Good Food <span>Brighter Days!</span></h1>
-    <p>Fresh Homemade Meals from Local Tiffin Providers Near You.</p>
+        <a href="index.html" class="logo">
 
-    <div class="search-box">
-      <input type="text" placeholder="Enter your location">
-      <select>
-        <option>Veg</option>
-        <option>Non-Veg</option>
-        <option>Healthy</option>
-      </select>
-      <button>Search</button>
-    </div>
-  </div>
-</section>
+            <div class="logo-icon">
+                🍱
+            </div>
 
-<section id="about" class="about">
-  <h2>About Smart Tiffin</h2>
-  <p>Fresh homemade food from trusted local tiffin providers.</p>
+            <div class="logo-text">
+                <h2>Smart Tiffin</h2>
+                <p>Homemade Food, Happier You!</p>
+            </div>
 
-  <div class="about-box">
-    <div><h3>100+</h3><p>Tiffins</p></div>
-    <div><h3>50+</h3><p>Providers</p></div>
-    <div><h3>4.9</h3><p>Rating</p></div>
-  </div>
-</section>
+        </a>
 
-<section id="providers" class="providers">
-  <h2>Our Tiffin Providers</h2>
+        <nav>
 
-  <div class="provider-grid">
+            <a href="index.html">Home</a>
 
-    <div class="card">
-      <img src="veg.jpg" alt="Classic Veg">
-      <h3>Classic Veg</h3>
-      <p>₹99 / Meal</p>
-      <a href="classic-veg.html"><button>View Plates</button></a>
-    </div>
+            <a href="#about">About</a>
 
-    <div class="card">
-      <img src="paneer.png" alt="Paneer Meal">
-      <h3>Paneer Meal</h3>
-      <p>₹120 / Meal</p>
-      <a href="menu.html"><button>View Plates</button></a>
-    </div>
+            <a href="#providers">Menu</a>
 
-    <div class="card">
-      <img src="thali.png" alt="Special Thali">
-      <h3>Special Thali</h3>
-      <p>₹150 / Meal</p>
-      <a href="menu.html"><button>View Plates</button></a>
-    </div>
+            <a href="#plans">Plans</a>
 
-  </div>
-</section>
+            <a href="#contact">Contact</a>
 
-<section id="plans" class="plans">
-  <h2>Choose Your Meal Plan</h2>
+            <a href="login.html" class="login">
+                Login
+            </a>
 
-  <div class="plan-grid">
-    <div class="plan-card">
-      <h3>Daily</h3>
-      <h1>₹99</h1>
-      <p>1 Lunch + Dinner</p>
-    </div>
+            <a href="register.html" class="signup">
+                Sign Up
+            </a>
 
-    <div class="plan-card popular">
-      <h3>Weekly</h3>
-      <h1>₹649</h1>
-      <p>7 Days Meal Plan</p>
-    </div>
+        </nav>
 
-    <div class="plan-card">
-      <h3>Monthly</h3>
-      <h1>₹2499</h1>
-      <p>30 Days Meal Plan</p>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
 
-  <div class="contact-box">
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Email">
-    <textarea placeholder="Your Message"></textarea>
-    <button>Send Message</button>
-  </div>
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
 
-  <p>📧 smarttiffin@gmail.com</p>
-  <p>📞 +91 98765 43210</p>
-  <p>📍 Garhshankar, Punjab</p>
-</section>
+    <main>
 
-<footer class="footer">
-  <p>© 2026 Smart Tiffin. All Rights Reserved.</p>
-</footer>
+        <section class="hero" id="home">
 
-<script src="js/script.js"></script>
+            <div class="hero-content">
+
+                <span class="badge">
+                    🍃 Fresh • Homemade • Trusted
+                </span>
+
+                <h1>
+                    Good Food.
+                    <br>
+                    <span>Brighter Days!</span>
+                </h1>
+
+                <p class="hero-text">
+                    Discover fresh, homemade meals from trusted local
+                    tiffin providers. Delicious food, convenient ordering
+                    and meals made with care.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#providers" class="primary-btn">
+                        Explore Meals →
+                    </a>
+
+                    <a href="menu.html" class="secondary-btn">
+                        View Full Menu
+                    </a>
+
+                </div>
+
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="locationInput"
+                        placeholder="Enter your location"
+                        aria-label="Enter your location">
+
+                    <select
+                        id="foodType"
+                        aria-label="Select food type">
+
+                        <option value="Veg">
+                            Veg
+                        </option>
+
+                        <option value="Non-Veg">
+                            Non-Veg
+                        </option>
+
+                        <option value="Healthy">
+                            Healthy
+                        </option>
+
+                    </select>
+
+                    <button type="button" id="searchBtn">
+                        Search
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TRUST BAR
+        ========================== -->
+
+        <section class="trust-bar">
+
+            <div class="trust-item">
+                <span>🥗</span>
+                <strong>Fresh Ingredients</strong>
+            </div>
+
+            <div class="trust-item">
+                <span>🏠</span>
+                <strong>Homemade Meals</strong>
+            </div>
+
+            <div class="trust-item">
+                <span>🚚</span>
+                <strong>Easy Delivery</strong>
+            </div>
+
+            <div class="trust-item">
+                <span>⭐</span>
+                <strong>Trusted Providers</strong>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT SECTION
+        ========================== -->
+
+        <section class="about" id="about">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    About Smart Tiffin
+                </div>
+
+                <h2>
+                    Homemade food, made for your everyday life
+                </h2>
+
+                <p>
+                    Smart Tiffin makes it easy to discover delicious
+                    homemade meals from trusted local tiffin providers.
+                </p>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <div class="about-image">
+
+                    <img
+                        src="veg.jpg"
+                        alt="Fresh homemade Indian tiffin meal">
+
+                </div>
+
+
+                <div class="about-text">
+
+                    <h3>
+                        Food that feels like home ❤️
+                    </h3>
+
+                    <p>
+                        Whether you are a student, working professional,
+                        family member or someone living away from home,
+                        Smart Tiffin helps you find convenient homemade meals.
+                    </p>
+
+                    <p>
+                        Choose your meal, select a plan and connect with
+                        trusted local tiffin providers.
+                    </p>
+
+
+                    <div class="stats">
+
+                        <div class="stat">
+                            <h3>100+</h3>
+                            <p>Meals</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Providers</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>4.9★</h3>
+                            <p>Rating</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             POPULAR MEALS
+        ========================== -->
+
+        <section class="providers" id="providers">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Popular Choices
+                </div>
+
+                <h2>
+                    Delicious meals from trusted providers
+                </h2>
+
+                <p>
+                    Choose from simple everyday meals to special
+                    homemade thalis.
+                </p>
+
+            </div>
+
+
+            <div class="provider-grid">
+
+
+                <!-- Classic Veg -->
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        <img
+                            src="veg.jpg"
+                            alt="Classic Veg Tiffin"
+                            loading="lazy">
+
+                        <div class="price-tag">
+                            ₹99 / Meal
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>
+                            Classic Veg Tiffin
+                        </h3>
+
+                        <p>
+                            2 Roti, seasonal sabzi, rice,
+                            dal and fresh salad.
+                        </p>
+
+                        <a
+                            href="classic-veg.html"
+                            class="card-btn">
+                            View Meal
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Paneer Meal -->
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        <img
+                            src="paneer.png"
+                            alt="Paneer Meal"
+                            loading="lazy">
+
+                        <div class="price-tag">
+                            ₹120 / Meal
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>
+                            Paneer Meal
+                        </h3>
+
+                        <p>
+                            Delicious paneer curry with roti,
+                            rice and fresh salad.
+                        </p>
+
+                        <a
+                            href="menu.html"
+                            class="card-btn">
+                            View Meal
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Special Thali -->
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        <img
+                            src="thali.png"
+                            alt="Special Homemade Thali"
+                            loading="lazy">
+
+                        <div class="price-tag">
+                            ₹150 / Meal
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>
+                            Special Thali
+                        </h3>
+
+                        <p>
+                            Complete homemade meal with
+                            multiple delicious dishes.
+                        </p>
+
+                        <a
+                            href="menu.html"
+                            class="card-btn">
+                            View Meal
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="section-action">
+
+                <a href="menu.html" class="primary-btn">
+                    View All Meals →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WHY SMART TIFFIN
+        ========================== -->
+
+        <section class="why-us">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Why Smart Tiffin?
+                </div>
+
+                <h2>
+                    Everything you need for better everyday meals
+                </h2>
+
+                <p>
+                    Simple ordering, trusted providers and food
+                    that feels like home.
+                </p>
+
+            </div>
+
+
+            <div class="features">
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🏠
+                    </div>
+
+                    <h3>
+                        Homemade
+                    </h3>
+
+                    <p>
+                        Meals prepared with a warm
+                        homemade touch.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🥬
+                    </div>
+
+                    <h3>
+                        Fresh Ingredients
+                    </h3>
+
+                    <p>
+                        Fresh ingredients for delicious
+                        everyday meals.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Easy Ordering
+                    </h3>
+
+                    <p>
+                        Select your meal and place
+                        your order easily.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ❤️
+                    </div>
+
+                    <h3>
+                        Trusted Providers
+                    </h3>
+
+                    <p>
+                        Discover local tiffin providers
+                        in one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MEAL PLANS
+        ========================== -->
+
+        <section class="plans" id="plans">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Meal Plans
+                </div>
+
+                <h2>
+                    Choose a plan that fits your routine
+                </h2>
+
+                <p>
+                    Flexible options for daily, weekly and
+                    monthly meals.
+                </p>
+
+            </div>
+
+
+            <div class="plan-grid">
+
+
+                <!-- Daily -->
+
+                <article class="plan-card">
+
+                    <h3>
+                        Daily
+                    </h3>
+
+                    <div class="plan-price">
+                        ₹99
+                    </div>
+
+                    <p>
+                        Perfect for trying a meal.
+                    </p>
+
+                    <ul class="plan-features">
+
+                        <li>✓ Fresh homemade meal</li>
+                        <li>✓ Flexible ordering</li>
+                        <li>✓ Easy checkout</li>
+
+                    </ul>
+
+                    <a
+                        href="customer.html"
+                        class="plan-btn">
+                        Order Now
+                    </a>
+
+                </article>
+
+
+                <!-- Weekly -->
+
+                <article class="plan-card popular">
+
+                    <div class="popular-label">
+                        MOST POPULAR
+                    </div>
+
+                    <h3>
+                        Weekly
+                    </h3>
+
+                    <div class="plan-price">
+                        ₹649
+                    </div>
+
+                    <p>
+                        Convenient meals for 7 days.
+                    </p>
+
+                    <ul class="plan-features">
+
+                        <li>✓ 7 days meal plan</li>
+                        <li>✓ Homemade food</li>
+                        <li>✓ Convenient ordering</li>
+
+                    </ul>
+
+                    <a
+                        href="customer.html"
+                        class="plan-btn">
+                        Choose Plan
+                    </a>
+
+                </article>
+
+
+                <!-- Monthly -->
+
+                <article class="plan-card">
+
+                    <h3>
+                        Monthly
+                    </h3>
+
+                    <div class="plan-price">
+                        ₹2499
+                    </div>
+
+                    <p>
+                        Convenient meals for 30 days.
+                    </p>
+
+                    <ul class="plan-features">
+
+                        <li>✓ 30 days meal plan</li>
+                        <li>✓ Homemade meals</li>
+                        <li>✓ Easy management</li>
+
+                    </ul>
+
+                    <a
+                        href="customer.html"
+                        class="plan-btn">
+                        Choose Plan
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CALL TO ACTION
+        ========================== -->
+
+        <section class="cta">
+
+            <div class="cta-box">
+
+                <div>
+
+                    <h2>
+                        Ready for a homemade meal?
+                    </h2>
+
+                    <p>
+                        Find your favourite tiffin and place
+                        your first order today.
+                    </p>
+
+                </div>
+
+                <a
+                    href="menu.html"
+                    class="cta-btn">
+                    Explore Menu →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section class="contact" id="contact">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Contact Us
+                </div>
+
+                <h2>
+                    We would love to hear from you
+                </h2>
+
+                <p>
+                    Have a question about meals, providers or orders?
+                    Send us a message.
+                </p>
+
+            </div>
+
+
+            <div class="contact-wrapper">
+
+
+                <div class="contact-info">
+
+                    <h3>
+                        Get in touch
+                    </h3>
+
+                    <p>
+                        📧 smarttiffin@gmail.com
+                    </p>
+
+                    <p>
+                        📞 +91 98765 43210
+                    </p>
+
+                    <p>
+                        📍 Garhshankar, Punjab
+                    </p>
+
+                    <p>
+                        🕒 Mon – Sat: 9:00 AM – 8:00 PM
+                    </p>
+
+                </div>
+
+
+                <form
+                    class="contact-form"
+                    id="contactForm">
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        required>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required>
+
+                    <textarea
+                        name="message"
+                        placeholder="Write your message..."
+                        required></textarea>
+
+                    <button type="submit">
+                        Send Message →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-top">
+
+
+            <div class="footer-brand">
+
+                <h3>
+                    🍱 Smart Tiffin
+                </h3>
+
+                <p>
+                    Homemade food made easier.
+                    Discover trusted local tiffin providers
+                    and enjoy delicious everyday meals.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="#about">
+                        About
+                    </a>
+
+                    <a href="menu.html">
+                        Menu
+                    </a>
+
+                    <a href="#plans">
+                        Plans
+                    </a>
+
+                    <a href="#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Account
+                </h3>
+
+                <div class="footer-links">
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                    <a href="register.html">
+                        Sign Up
+                    </a>
+
+                    <a href="menu.html">
+                        View Menu
+                    </a>
+
+                    <a href="customer.html">
+                        Place Order
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Smart Tiffin. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>
