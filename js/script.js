@@ -1,726 +1,1022 @@
 // =========================================================
-// SMART TIFFIN - MAIN JAVASCRIPT
+// SMART TIFFIN - COMPLETE JAVASCRIPT
+// Supabase + Website Functions
 // =========================================================
 
 
 // =========================================================
-// SMOOTH SCROLL
+// SUPABASE CONNECTION
 // =========================================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+const SUPABASE_URL =
+    "https://fwtsiwskybswydtjoxtq.supabase.co";
 
-    anchor.addEventListener("click", function (e) {
+const SUPABASE_KEY =
+    "sb_publishable_ivmhhFGq_a4by4s8ZyiV2g_tg4epxUJ";
 
-        const target = document.querySelector(
-            this.getAttribute("href")
-        );
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
-        if (target) {
+console.log("Supabase connected successfully!");
 
-            e.preventDefault();
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+// =========================================================
+// PAGE LOAD
+// =========================================================
 
-        }
+document.addEventListener("DOMContentLoaded", function () {
+
+    console.log("Smart Tiffin website loaded successfully 🍱");
+
+
+    // =====================================================
+    // SMOOTH SCROLL
+    // =====================================================
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+
+        link.addEventListener("click", function (e) {
+
+            const targetId =
+                this.getAttribute("href");
+
+            if (
+                targetId &&
+                targetId !== "#" &&
+                document.querySelector(targetId)
+            ) {
+
+                e.preventDefault();
+
+                document.querySelector(targetId)
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+            }
+
+        });
 
     });
 
-});
+
+    // =====================================================
+    // CUSTOMER ORDER FORM
+    // =====================================================
+
+    const orderForm =
+        document.getElementById("orderForm");
 
 
-// =========================================================
-// CUSTOMER ORDER PAGE
-// =========================================================
+    if (orderForm) {
 
-const orderForm = document.getElementById("orderForm");
-const tiffin = document.getElementById("tiffin");
-const quantity = document.getElementById("quantity");
+        const mealSelect =
+            document.getElementById("meal");
 
-const summaryMeal = document.getElementById("summaryMeal");
-const summaryQuantity = document.getElementById("summaryQuantity");
-const mealPrice = document.getElementById("mealPrice");
-const quantityPrice = document.getElementById("quantityPrice");
-const totalPrice = document.getElementById("totalPrice");
+        const quantityInput =
+            document.getElementById("quantity");
 
+        const orderSummary =
+            document.getElementById("orderSummary");
 
-const mealPrices = {
+        const summaryMeal =
+            document.getElementById("summaryMeal");
 
-    "Classic Veg Tiffin": 99,
-    "Paneer Meal": 120,
-    "Special Thali": 150
+        const summaryPrice =
+            document.getElementById("summaryPrice");
 
-};
+        const summaryQuantity =
+            document.getElementById("summaryQuantity");
 
-
-function updateOrderSummary() {
-
-    if (!tiffin || !quantity) {
-        return;
-    }
-
-    const selectedMeal = tiffin.value;
-
-    const selectedQuantity =
-        parseInt(quantity.value) || 1;
-
-    const price =
-        mealPrices[selectedMeal] || 0;
-
-    const total =
-        price * selectedQuantity;
+        const summaryTotal =
+            document.getElementById("summaryTotal");
 
 
-    if (summaryMeal) {
-        summaryMeal.textContent =
-            selectedMeal || "Select a meal";
-    }
+        // -----------------------------------------------
+        // MEAL PRICES
+        // -----------------------------------------------
 
-    if (summaryQuantity) {
-        summaryQuantity.textContent =
-            "Quantity: " + selectedQuantity;
-    }
+        const mealPrices = {
 
-    if (mealPrice) {
-        mealPrice.textContent =
-            "₹" + price;
-    }
+            "Classic Veg Tiffin": 99,
 
-    if (quantityPrice) {
-        quantityPrice.textContent =
-            selectedQuantity;
-    }
+            "Veg Tiffin": 99,
 
-    if (totalPrice) {
-        totalPrice.textContent =
-            "₹" + total;
-    }
+            "Paneer Meal": 120,
 
-}
+            "Special Thali": 150
+
+        };
 
 
-if (tiffin) {
+        // -----------------------------------------------
+        // UPDATE ORDER SUMMARY
+        // -----------------------------------------------
 
-    tiffin.addEventListener(
-        "change",
-        updateOrderSummary
-    );
+        function updateOrderSummary() {
 
-}
+            if (!mealSelect) {
+                return;
+            }
 
-
-if (quantity) {
-
-    quantity.addEventListener(
-        "change",
-        updateOrderSummary
-    );
-
-}
-
-
-updateOrderSummary();
-
-
-// =========================================================
-// DELIVERY DATE
-// =========================================================
-
-const deliveryDate =
-    document.getElementById("deliveryDate");
-
-if (deliveryDate) {
-
-    const today =
-        new Date().toISOString().split("T")[0];
-
-    deliveryDate.min = today;
-
-}
-
-
-// =========================================================
-// PLACE ORDER
-// =========================================================
-
-if (orderForm) {
-
-    orderForm.addEventListener(
-        "submit",
-        function (e) {
-
-            e.preventDefault();
-
-            const name =
-                document
-                .getElementById("fullName")
-                ?.value.trim();
 
             const selectedMeal =
-                tiffin?.value;
+                mealSelect.value;
 
-            const selectedQuantity =
-                parseInt(quantity?.value) || 1;
-
-
-            if (!name || !selectedMeal) {
-
-                alert(
-                    "Please enter your details and select a meal."
-                );
-
-                return;
-
-            }
+            const quantity =
+                quantityInput
+                    ? parseInt(quantityInput.value) || 1
+                    : 1;
 
 
             const price =
                 mealPrices[selectedMeal] || 0;
 
+
             const total =
-                price * selectedQuantity;
+                price * quantity;
 
 
-            alert(
-                "Order placed successfully! 🍱\n\n" +
-                "Customer: " + name + "\n" +
-                "Meal: " + selectedMeal + "\n" +
-                "Quantity: " + selectedQuantity + "\n" +
-                "Total: ₹" + total
+            if (summaryMeal) {
+
+                summaryMeal.textContent =
+                    selectedMeal || "Not selected";
+
+            }
+
+
+            if (summaryPrice) {
+
+                summaryPrice.textContent =
+                    "₹" + price;
+
+            }
+
+
+            if (summaryQuantity) {
+
+                summaryQuantity.textContent =
+                    quantity;
+
+            }
+
+
+            if (summaryTotal) {
+
+                summaryTotal.textContent =
+                    "₹" + total;
+
+            }
+
+
+            if (orderSummary) {
+
+                orderSummary.style.display =
+                    selectedMeal
+                        ? "block"
+                        : "none";
+
+            }
+
+        }
+
+
+        if (mealSelect) {
+
+            mealSelect.addEventListener(
+                "change",
+                updateOrderSummary
             );
 
-
-            orderForm.reset();
-
-            updateOrderSummary();
-
         }
-    );
-
-}
 
 
-// =========================================================
-// HOMEPAGE SEARCH
-// =========================================================
+        if (quantityInput) {
 
-const searchBtn =
-    document.getElementById("searchBtn");
-
-if (searchBtn) {
-
-    searchBtn.addEventListener(
-        "click",
-        function () {
-
-            const location =
-                document
-                .getElementById("locationInput")
-                ?.value.trim();
-
-            const foodType =
-                document
-                .getElementById("foodType")
-                ?.value;
-
-
-            if (!location) {
-
-                alert(
-                    "Please enter your location."
-                );
-
-                return;
-
-            }
-
-
-            alert(
-                "Searching for " +
-                foodType +
-                " tiffin meals near " +
-                location +
-                " 🍱"
+            quantityInput.addEventListener(
+                "input",
+                updateOrderSummary
             );
 
-
-            window.location.href = "menu.html";
-
         }
-    );
-
-}
 
 
-// =========================================================
-// CONTACT FORM
-// =========================================================
-
-const contactForm =
-    document.getElementById("contactForm");
-
-if (contactForm) {
-
-    contactForm.addEventListener(
-        "submit",
-        function (e) {
-
-            e.preventDefault();
-
-            const name =
-                contactForm
-                .querySelector(
-                    'input[name="name"]'
-                )
-                ?.value.trim();
+        updateOrderSummary();
 
 
-            if (!name) {
+        // -----------------------------------------------
+        // ORDER SUBMIT
+        // -----------------------------------------------
 
-                alert(
-                    "Please enter your name."
-                );
+        orderForm.addEventListener(
+            "submit",
+            async function (e) {
 
-                return;
+                e.preventDefault();
+
+
+                const nameInput =
+                    document.getElementById("name") ||
+                    document.getElementById("customerName");
+
+                const phoneInput =
+                    document.getElementById("phone") ||
+                    document.getElementById("customerPhone");
+
+                const addressInput =
+                    document.getElementById("address") ||
+                    document.getElementById("customerAddress");
+
+                const dateInput =
+                    document.getElementById("deliveryDate") ||
+                    document.getElementById("orderDate");
+
+                const instructionsInput =
+                    document.getElementById("instructions");
+
+
+                const name =
+                    nameInput
+                        ? nameInput.value.trim()
+                        : "";
+
+                const phone =
+                    phoneInput
+                        ? phoneInput.value.trim()
+                        : "";
+
+                const address =
+                    addressInput
+                        ? addressInput.value.trim()
+                        : "";
+
+                const selectedMeal =
+                    mealSelect
+                        ? mealSelect.value
+                        : "";
+
+                const quantity =
+                    quantityInput
+                        ? parseInt(quantityInput.value) || 1
+                        : 1;
+
+                const orderDate =
+                    dateInput
+                        ? dateInput.value
+                        : "";
+
+
+                // -------------------------------------------
+                // VALIDATION
+                // -------------------------------------------
+
+                if (!name) {
+
+                    alert("Please enter your name.");
+
+                    return;
+
+                }
+
+
+                if (!phone) {
+
+                    alert("Please enter your phone number.");
+
+                    return;
+
+                }
+
+
+                if (!address) {
+
+                    alert("Please enter your address.");
+
+                    return;
+
+                }
+
+
+                if (!selectedMeal) {
+
+                    alert("Please select a meal.");
+
+                    return;
+
+                }
+
+
+                // -------------------------------------------
+                // FIND FOOD ID FROM DATABASE
+                // -------------------------------------------
+
+                let foodName =
+                    selectedMeal;
+
+
+                if (selectedMeal === "Classic Veg Tiffin") {
+
+                    foodName = "Veg Tiffin";
+
+                }
+
+
+                try {
+
+                    // ---------------------------------------
+                    // GET FOOD FROM MENU TABLE
+                    // ---------------------------------------
+
+                    const {
+                        data: menuData,
+                        error: menuError
+                    } = await supabaseClient
+                        .from("menu")
+                        .select("id, food_name, price")
+                        .eq("food_name", foodName)
+                        .single();
+
+
+                    if (menuError) {
+
+                        console.error(
+                            "Menu error:",
+                            menuError
+                        );
+
+                        alert(
+                            "Meal could not be found in database."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // ---------------------------------------
+                    // INSERT CUSTOMER
+                    // ---------------------------------------
+
+                    const {
+                        data: customerData,
+                        error: customerError
+                    } = await supabaseClient
+                        .from("customers")
+                        .insert([
+                            {
+                                name: name,
+                                phone: phone,
+                                address: address
+                            }
+                        ])
+                        .select()
+                        .single();
+
+
+                    if (customerError) {
+
+                        console.error(
+                            "Customer error:",
+                            customerError
+                        );
+
+                        alert(
+                            "Customer information could not be saved."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // ---------------------------------------
+                    // INSERT ORDER
+                    // ---------------------------------------
+
+                    const {
+                        data: orderData,
+                        error: orderError
+                    } = await supabaseClient
+                        .from("orders")
+                        .insert([
+                            {
+                                customer_id:
+                                    customerData.id,
+
+                                food_id:
+                                    menuData.id,
+
+                                order_date:
+                                    orderDate ||
+                                    new Date()
+                                        .toISOString()
+                                        .split("T")[0]
+                            }
+                        ])
+                        .select()
+                        .single();
+
+
+                    if (orderError) {
+
+                        console.error(
+                            "Order error:",
+                            orderError
+                        );
+
+                        alert(
+                            "Order could not be saved."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // ---------------------------------------
+                    // SUCCESS
+                    // ---------------------------------------
+
+                    const total =
+                        (menuData.price || 0) *
+                        quantity;
+
+
+                    alert(
+                        "Order placed successfully! 🍱\n\n" +
+                        "Customer: " + name +
+                        "\nMeal: " + menuData.food_name +
+                        "\nQuantity: " + quantity +
+                        "\nTotal: ₹" + total +
+                        "\n\nOrder ID: " + orderData.id
+                    );
+
+
+                    // Clear form
+
+                    orderForm.reset();
+
+                    updateOrderSummary();
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Order submission error:",
+                        error
+                    );
+
+                    alert(
+                        "Something went wrong. Please try again."
+                    );
+
+                }
 
             }
-
-
-            alert(
-                "Thank you, " +
-                name +
-                "! ❤️\n\n" +
-                "Your message has been received."
-            );
-
-
-            contactForm.reset();
-
-        }
-    );
-
-}
-
-
-// =========================================================
-// LOGIN PAGE
-// =========================================================
-
-const loginForm =
-    document.getElementById("loginForm");
-
-const togglePassword =
-    document.getElementById("togglePassword");
-
-const loginPassword =
-    document.getElementById("loginPassword");
-
-
-if (togglePassword && loginPassword) {
-
-    togglePassword.addEventListener(
-        "click",
-        function () {
-
-            if (loginPassword.type === "password") {
-
-                loginPassword.type = "text";
-
-                togglePassword.textContent = "Hide";
-
-            } else {
-
-                loginPassword.type = "password";
-
-                togglePassword.textContent = "Show";
-
-            }
-
-        }
-    );
-
-}
-
-
-if (loginForm) {
-
-    loginForm.addEventListener(
-        "submit",
-        function (e) {
-
-            e.preventDefault();
-
-            const email =
-                document
-                .getElementById("loginEmail")
-                .value
-                .trim();
-
-
-            if (!email) {
-
-                alert(
-                    "Please enter your email."
-                );
-
-                return;
-
-            }
-
-
-            alert(
-                "Login successful! 🍱\n\n" +
-                "Welcome to Smart Tiffin."
-            );
-
-
-            window.location.href =
-                "customer.html";
-
-        }
-    );
-
-}
-
-
-// =========================================================
-// REGISTER PAGE
-// =========================================================
-
-const registerForm =
-    document.getElementById("registerForm");
-
-const toggleRegisterPassword =
-    document.getElementById(
-        "toggleRegisterPassword"
-    );
-
-const registerPassword =
-    document.getElementById(
-        "registerPassword"
-    );
-
-const confirmPassword =
-    document.getElementById(
-        "confirmPassword"
-    );
-
-
-if (toggleRegisterPassword && registerPassword) {
-
-    toggleRegisterPassword.addEventListener(
-        "click",
-        function () {
-
-            if (registerPassword.type === "password") {
-
-                registerPassword.type = "text";
-
-                toggleRegisterPassword.textContent =
-                    "Hide";
-
-            } else {
-
-                registerPassword.type = "password";
-
-                toggleRegisterPassword.textContent =
-                    "Show";
-
-            }
-
-        }
-    );
-
-}
-
-
-if (registerForm) {
-
-    registerForm.addEventListener(
-        "submit",
-        function (e) {
-
-            e.preventDefault();
-
-            const name =
-                document
-                .getElementById("registerName")
-                .value
-                .trim();
-
-            const password =
-                registerPassword.value;
-
-            const confirm =
-                confirmPassword.value;
-
-
-            if (password !== confirm) {
-
-                alert(
-                    "Passwords do not match."
-                );
-
-                return;
-
-            }
-
-
-            alert(
-                "Account created successfully! 🎉\n\n" +
-                "Welcome to Smart Tiffin, " +
-                name +
-                "!"
-            );
-
-
-            window.location.href =
-                "login.html";
-
-        }
-    );
-
-}
-
-
-// =========================================================
-// SIGN UP PAGE
-// =========================================================
-
-const signupForm =
-    document.getElementById("signupForm");
-
-const toggleSignupPassword =
-    document.getElementById(
-        "toggleSignupPassword"
-    );
-
-const signupPassword =
-    document.getElementById(
-        "signupPassword"
-    );
-
-
-if (toggleSignupPassword && signupPassword) {
-
-    toggleSignupPassword.addEventListener(
-        "click",
-        function () {
-
-            if (signupPassword.type === "password") {
-
-                signupPassword.type = "text";
-
-                toggleSignupPassword.textContent =
-                    "Hide";
-
-            } else {
-
-                signupPassword.type = "password";
-
-                toggleSignupPassword.textContent =
-                    "Show";
-
-            }
-
-        }
-    );
-
-}
-
-
-if (signupForm) {
-
-    signupForm.addEventListener(
-        "submit",
-        function (e) {
-
-            e.preventDefault();
-
-            const name =
-                document
-                .getElementById("signupName")
-                .value
-                .trim();
-
-            const role =
-                document
-                .getElementById("signupRole")
-                .value;
-
-
-            if (!role) {
-
-                alert(
-                    "Please select your account type."
-                );
-
-                return;
-
-            }
-
-
-            alert(
-                "Account created successfully! 🎉\n\n" +
-                "Welcome, " +
-                name +
-                "!"
-            );
-
-
-            window.location.href =
-                "login.html";
-
-        }
-    );
-
-}
-
-
-// =========================================================
-// ADMIN PAGE
-// =========================================================
-
-const adminFoodForm =
-    document.getElementById(
-        "adminFoodForm"
-    );
-
-
-if (adminFoodForm) {
-
-    adminFoodForm.addEventListener(
-        "submit",
-        function (e) {
-
-            e.preventDefault();
-
-            const foodName =
-                document
-                .getElementById("foodName")
-                .value
-                .trim();
-
-            const price =
-                document
-                .getElementById("foodPrice")
-                .value;
-
-
-            if (!foodName || !price) {
-
-                alert(
-                    "Please enter food name and price."
-                );
-
-                return;
-
-            }
-
-
-            alert(
-                "Meal added successfully! 🍱\n\n" +
-                foodName +
-                " — ₹" +
-                price
-            );
-
-
-            adminFoodForm.reset();
-
-        }
-    );
-
-}
-
-
-// =========================================================
-// FOOD IMAGE GALLERY
-// =========================================================
-// Click the main food image to briefly show
-// the available food images.
-// =========================================================
-
-const foodGalleries =
-    document.querySelectorAll(
-        ".food-gallery"
-    );
-
-
-foodGalleries.forEach(gallery => {
-
-    const mainImage =
-        gallery.querySelector(
-            ".main-food-image"
         );
 
-    const galleryImages =
-        gallery.querySelector(
-            ".gallery-images"
-        );
-
-    if (!mainImage || !galleryImages) {
-        return;
     }
 
 
-    let hideTimer;
+    // =====================================================
+    // SET MINIMUM DELIVERY DATE
+    // =====================================================
+
+    const deliveryDate =
+        document.getElementById("deliveryDate");
 
 
-    // Main image click
+    if (deliveryDate) {
 
-    mainImage.addEventListener(
-        "click",
-        function () {
+        const today =
+            new Date()
+                .toISOString()
+                .split("T")[0];
 
-            gallery.classList.add(
-                "show-gallery"
+        deliveryDate.min = today;
+
+    }
+
+
+    // =====================================================
+    // HOMEPAGE SEARCH
+    // =====================================================
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const searchButton =
+        document.getElementById("searchButton");
+
+
+    function performSearch() {
+
+        if (!searchInput) {
+            return;
+        }
+
+
+        const searchText =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+
+        if (!searchText) {
+
+            alert(
+                "Please search for a meal or tiffin."
+            );
+
+            return;
+
+        }
+
+
+        const menuItems =
+            document.querySelectorAll(
+                ".provider-card, .food-card, .meal-card"
             );
 
 
-            clearTimeout(hideTimer);
+        let found = false;
 
 
-            hideTimer = setTimeout(
-                function () {
+        menuItems.forEach(function (item) {
 
-                    gallery.classList.remove(
-                        "show-gallery"
-                    );
+            if (
+                item.textContent
+                    .toLowerCase()
+                    .includes(searchText)
+            ) {
 
-                },
-                4000
+                item.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                found = true;
+
+            }
+
+        });
+
+
+        if (!found) {
+
+            alert(
+                "No matching meal found."
             );
 
         }
-    );
+
+    }
 
 
-    // Thumbnail click
+    if (searchButton) {
 
-    const thumbnails =
-        galleryImages.querySelectorAll(
-            "img"
+        searchButton.addEventListener(
+            "click",
+            performSearch
+        );
+
+    }
+
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "keydown",
+            function (e) {
+
+                if (e.key === "Enter") {
+
+                    performSearch();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // =====================================================
+    // CONTACT FORM
+    // =====================================================
+
+    const contactForm =
+        document.getElementById("contactForm");
+
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+                alert(
+                    "Thank you! Your message has been received. 💚"
+                );
+
+                contactForm.reset();
+
+            }
+        );
+
+    }
+
+
+    // =====================================================
+    // LOGIN FORM
+    // =====================================================
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+
+    if (loginForm) {
+
+        loginForm.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+
+                const emailInput =
+                    document.getElementById("email");
+
+                const passwordInput =
+                    document.getElementById("password");
+
+
+                const email =
+                    emailInput
+                        ? emailInput.value.trim()
+                        : "";
+
+                const password =
+                    passwordInput
+                        ? passwordInput.value
+                        : "";
+
+
+                if (!email || !password) {
+
+                    alert(
+                        "Please enter email and password."
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Login successful! Welcome to Smart Tiffin. 🍱"
+                );
+
+
+                window.location.href =
+                    "customer.html";
+
+            }
+        );
+
+    }
+
+
+    // =====================================================
+    // PASSWORD TOGGLE
+    // =====================================================
+
+    document.querySelectorAll(
+        ".password-toggle, #togglePassword"
+    ).forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const passwordInput =
+                    document.getElementById("password");
+
+
+                if (!passwordInput) {
+                    return;
+                }
+
+
+                if (
+                    passwordInput.type ===
+                    "password"
+                ) {
+
+                    passwordInput.type =
+                        "text";
+
+                    this.textContent =
+                        "Hide";
+
+                } else {
+
+                    passwordInput.type =
+                        "password";
+
+                    this.textContent =
+                        "Show";
+
+                }
+
+            }
+        );
+
+    });
+
+
+    // =====================================================
+    // REGISTER FORM
+    // =====================================================
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+
+    if (registerForm) {
+
+        registerForm.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+
+                const password =
+                    document.getElementById("password");
+
+                const confirmPassword =
+                    document.getElementById(
+                        "confirmPassword"
+                    );
+
+
+                if (
+                    password &&
+                    confirmPassword &&
+                    password.value !==
+                    confirmPassword.value
+                ) {
+
+                    alert(
+                        "Passwords do not match."
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Account created successfully! 🎉"
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+    }
+
+
+    // =====================================================
+    // SIGNUP FORM
+    // =====================================================
+
+    const signupForm =
+        document.getElementById("signupForm");
+
+
+    if (signupForm) {
+
+        signupForm.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+
+                const password =
+                    document.getElementById("password");
+
+                const confirmPassword =
+                    document.getElementById(
+                        "confirmPassword"
+                    );
+
+
+                if (
+                    password &&
+                    confirmPassword &&
+                    password.value !==
+                    confirmPassword.value
+                ) {
+
+                    alert(
+                        "Passwords do not match."
+                    );
+
+                    return;
+
+                }
+
+
+                const role =
+                    document.getElementById("role");
+
+
+                if (
+                    role &&
+                    !role.value
+                ) {
+
+                    alert(
+                        "Please select your role."
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Signup completed successfully! 🎉"
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+    }
+
+
+    // =====================================================
+    // ADMIN FOOD FORM
+    // =====================================================
+
+    const foodForm =
+        document.getElementById("foodForm");
+
+
+    if (foodForm) {
+
+        foodForm.addEventListener(
+            "submit",
+            async function (e) {
+
+                e.preventDefault();
+
+
+                const foodNameInput =
+                    document.getElementById(
+                        "foodName"
+                    );
+
+                const priceInput =
+                    document.getElementById(
+                        "price"
+                    );
+
+
+                const foodName =
+                    foodNameInput
+                        ? foodNameInput.value.trim()
+                        : "";
+
+                const price =
+                    priceInput
+                        ? parseInt(priceInput.value)
+                        : 0;
+
+
+                if (!foodName || !price) {
+
+                    alert(
+                        "Please enter food name and price."
+                    );
+
+                    return;
+
+                }
+
+
+                try {
+
+                    const {
+                        error
+                    } = await supabaseClient
+                        .from("menu")
+                        .insert([
+                            {
+                                food_name:
+                                    foodName,
+
+                                price:
+                                    price
+                            }
+                        ]);
+
+
+                    if (error) {
+
+                        console.error(error);
+
+                        alert(
+                            "Food could not be added."
+                        );
+
+                        return;
+
+                    }
+
+
+                    alert(
+                        "Food added successfully! 🍱"
+                    );
+
+
+                    foodForm.reset();
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    alert(
+                        "Something went wrong."
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // =====================================================
+    // FOOD IMAGE GALLERY
+    // =====================================================
+
+    const galleries =
+        document.querySelectorAll(
+            ".food-gallery"
         );
 
 
-    thumbnails.forEach(thumbnail => {
+    galleries.forEach(function (gallery) {
 
-        thumbnail.addEventListener(
+        const mainImage =
+            gallery.querySelector(
+                ".main-food-image"
+            );
+
+
+        const galleryImages =
+            gallery.querySelector(
+                ".gallery-images"
+            );
+
+
+        if (
+            !mainImage ||
+            !galleryImages
+        ) {
+
+            return;
+
+        }
+
+
+        let hideTimer;
+
+
+        // -----------------------------------------------
+        // MAIN IMAGE CLICK
+        // -----------------------------------------------
+
+        mainImage.addEventListener(
             "click",
-            function (e) {
-
-                e.stopPropagation();
-
-
-                mainImage.src =
-                    thumbnail.src;
-
-                mainImage.alt =
-                    thumbnail.alt;
-
+            function () {
 
                 gallery.classList.add(
                     "show-gallery"
@@ -730,15 +1026,73 @@ foodGalleries.forEach(gallery => {
                 clearTimeout(hideTimer);
 
 
-                hideTimer = setTimeout(
-                    function () {
+                hideTimer =
+                    setTimeout(
+                        function () {
 
-                        gallery.classList.remove(
+                            gallery.classList.remove(
+                                "show-gallery"
+                            );
+
+                        },
+                        4000
+                    );
+
+            }
+        );
+
+
+        // -----------------------------------------------
+        // THUMBNAIL CLICK
+        // -----------------------------------------------
+
+        const thumbnails =
+            galleryImages.querySelectorAll(
+                "img"
+            );
+
+
+        thumbnails.forEach(
+            function (thumbnail) {
+
+                thumbnail.addEventListener(
+                    "click",
+                    function (e) {
+
+                        e.stopPropagation();
+
+
+                        mainImage.src =
+                            thumbnail.src;
+
+
+                        mainImage.alt =
+                            thumbnail.alt;
+
+
+                        gallery.classList.add(
                             "show-gallery"
                         );
 
-                    },
-                    4000
+
+                        clearTimeout(
+                            hideTimer
+                        );
+
+
+                        hideTimer =
+                            setTimeout(
+                                function () {
+
+                                    gallery.classList.remove(
+                                        "show-gallery"
+                                    );
+
+                                },
+                                4000
+                            );
+
+                    }
                 );
 
             }
@@ -746,13 +1100,13 @@ foodGalleries.forEach(gallery => {
 
     });
 
+
+    // =====================================================
+    // FINISH
+    // =====================================================
+
+    console.log(
+        "Smart Tiffin website loaded successfully 🍱"
+    );
+
 });
-
-
-// =========================================================
-// FINISH
-// =========================================================
-
-console.log(
-    "Smart Tiffin website loaded successfully 🍱"
-);
