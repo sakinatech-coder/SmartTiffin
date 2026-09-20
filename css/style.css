@@ -42,10 +42,16 @@ nav a{
   display:flex;
   align-items:center;
   padding:8%;
-  background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url('../bg.jpg') center/cover no-repeat;
   color:#fff;
+
+  background:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("bg.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
 }
 
 .left{max-width:520px;}
