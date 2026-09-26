@@ -1,351 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Place Order | Smart Tiffin</title>
-
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Now | Smart Tiffin</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
+<header class="navbar">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🍱</div>
+    <h2>Smart Tiffin</h2>
+  </a>
 
-        <a href="index.html" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+  </nav>
+</header>
 
-            <div class="logo-icon">
-                🍱
-            </div>
+<section class="contact">
 
-            <div class="logo-text">
-                <h2>Smart Tiffin</h2>
-                <p>Homemade Food, Happier You!</p>
-            </div>
+  <div class="section-heading">
+    <div class="small-title">PLACE ORDER</div>
+    <h2>Order Your Homemade Meal</h2>
+    <p>Fill your details and we'll contact you.</p>
+  </div>
 
-        </a>
+  <form class="contact-form">
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="customer.html" class="signup">My Order</a>
-            <a href="login.html" class="login">Logout</a>
-        </nav>
+    <input type="text" placeholder="Full Name" required>
 
-    </header>
+    <input type="tel" placeholder="Phone Number" required>
 
+    <input type="text" placeholder="Delivery Address" required>
 
-    <!-- ORDER PAGE -->
-    <main class="order-page">
+    <select required>
+      <option value="">Select Meal</option>
+      <option>Classic Veg - ₹79</option>
+      <option>Aloo Paratha - ₹89</option>
+      <option>Gobi Paratha - ₹89</option>
+      <option>Paneer Meal - ₹129</option>
+      <option>Palak Paneer Thali - ₹229</option>
+      <option>Shahi Paneer Thali - ₹249</option>
+    </select>
 
-        <div class="order-header">
+    <textarea placeholder="Special Instructions"></textarea>
 
-            <div class="small-title">
-                Smart & Easy Ordering
-            </div>
+    <button type="submit">
+      Confirm Order
+    </button>
 
-            <h1>
-                Place Your Tiffin Order 🍱
-            </h1>
+  </form>
 
-            <p>
-                Choose your favourite meal and tell us where
-                you would like it delivered.
-            </p>
+</section>
 
-        </div>
-
-
-        <div class="order-container">
-
-
-            <!-- CUSTOMER DETAILS -->
-            <section class="order-card">
-
-                <h2>👤 Customer Details</h2>
-
-                <p class="card-subtitle">
-                    Enter your information for delivery.
-                </p>
-
-                <form id="orderForm">
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="fullName">
-                                Full Name
-                            </label>
-
-                            <input
-                                type="text"
-                                id="fullName"
-                                name="fullName"
-                                placeholder="Enter your full name"
-                                required>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="phone">
-                                Phone Number
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="Enter phone number"
-                                required>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="address">
-                            Delivery Address
-                        </label>
-
-                        <textarea
-                            id="address"
-                            name="address"
-                            placeholder="House No., Street, Area, City..."
-                            required></textarea>
-
-                    </div>
-
-
-                    <!-- MEAL SELECTION -->
-                    <div class="form-group">
-
-                        <label for="tiffin">
-                            Select Your Meal
-                        </label>
-
-                        <select
-                            id="tiffin"
-                            name="tiffin"
-                            required>
-
-                            <option value="">
-                                Choose a tiffin
-                            </option>
-
-                            <option value="Classic Veg Tiffin">
-                                Classic Veg Tiffin — ₹99
-                            </option>
-
-                            <option value="Paneer Meal">
-                                Paneer Meal — ₹120
-                            </option>
-
-                            <option value="Special Thali">
-                                Special Thali — ₹150
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="quantity">
-                                Quantity
-                            </label>
-
-                            <select
-                                id="quantity"
-                                name="quantity"
-                                required>
-
-                                <option value="1">1 Meal</option>
-                                <option value="2">2 Meals</option>
-                                <option value="3">3 Meals</option>
-                                <option value="4">4 Meals</option>
-                                <option value="5">5 Meals</option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="deliveryDate">
-                                Delivery Date
-                            </label>
-
-                            <input
-                                type="date"
-                                id="deliveryDate"
-                                name="deliveryDate"
-                                required>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="instructions">
-                            Special Instructions
-                            <span>(Optional)</span>
-                        </label>
-
-                        <textarea
-                            id="instructions"
-                            name="instructions"
-                            placeholder="Any special request?"></textarea>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="place-order-btn">
-
-                        Place Order →
-                    </button>
-
-                </form>
-
-            </section>
-
-
-            <!-- ORDER SUMMARY -->
-            <aside class="order-summary">
-
-                <div class="summary-card">
-
-                    <h2>🧾 Order Summary</h2>
-
-                    <div class="summary-meal">
-
-                        <div class="meal-icon">
-                            🍱
-                        </div>
-
-                        <div>
-
-                            <h3 id="summaryMeal">
-                                Select a meal
-                            </h3>
-
-                            <p id="summaryQuantity">
-                                Quantity: 1
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="summary-line">
-                        <span>Meal Price</span>
-                        <strong id="mealPrice">
-                            ₹0
-                        </strong>
-                    </div>
-
-
-                    <div class="summary-line">
-                        <span>Quantity</span>
-                        <strong id="quantityPrice">
-                            1
-                        </strong>
-                    </div>
-
-
-                    <div class="summary-line">
-                        <span>Delivery</span>
-                        <strong>
-                            Free
-                        </strong>
-                    </div>
-
-
-                    <div class="summary-divider"></div>
-
-
-                    <div class="summary-total">
-
-                        <span>
-                            Total
-                        </span>
-
-                        <strong id="totalPrice">
-                            ₹0
-                        </strong>
-
-                    </div>
-
-
-                    <div class="secure-note">
-
-                        🔒
-                        <span>
-                            Your order details are kept secure.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- HELP CARD -->
-                <div class="help-card">
-
-                    <h3>
-                        Need Help?
-                    </h3>
-
-                    <p>
-                        Have questions about your order?
-                        Contact Smart Tiffin support.
-                    </p>
-
-                    <a href="index.html#contact">
-                        Contact Us →
-                    </a>
-
-                </div>
-
-            </aside>
-
-        </div>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer class="footer">
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 Smart Tiffin. All Rights Reserved.
-            </p>
-
-        </div>
-
-    </footer>
-
-
-    <script src="js/script.js"></script>
+<footer class="footer">
+  <p>© 2026 Smart Tiffin</p>
+</footer>
 
 </body>
-
 </html>
