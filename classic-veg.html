@@ -1,283 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Veg Meals | Smart Tiffin</title>
-
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classic Veg Tiffin</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+<header class="navbar">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🍱</div>
+    <h2>Smart Tiffin</h2>
+  </a>
 
-    <header class="navbar">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+  </nav>
+</header>
 
-        <a href="index.html" class="logo">
+<section class="about">
 
-            <div class="logo-icon">
-                🍱
-            </div>
+  <div class="about-content">
 
-            <div class="logo-text">
-                <h2>Smart Tiffin</h2>
-                <p>Homemade Food, Happier You!</p>
-            </div>
+    <div class="about-image">
+      <img src="veg.jpg" alt="Classic Veg Tiffin">
+    </div>
 
-        </a>
+    <div class="about-text">
 
-        <nav>
+      <h2>Classic Veg Tiffin</h2>
 
-            <a href="index.html">
-                ← Back Home
-            </a>
+      <h3>₹79</h3>
 
-            <a href="menu.html">
-                Menu
-            </a>
+      <p>Fresh homemade everyday meal.</p>
 
-            <a href="customer.html" class="signup">
-                Order
-            </a>
+      <h3>Includes:</h3>
 
-        </nav>
+      <ul>
+        <li>2 Fresh Roti</li>
+        <li>Seasonal Sabzi</li>
+        <li>Dal</li>
+        <li>Rice</li>
+        <li>Fresh Salad</li>
+      </ul>
 
-    </header>
+      <br>
 
+      <a href="customer.html" class="primary-btn">
+        Order Now
+      </a>
 
-    <!-- PAGE -->
+    </div>
 
-    <main class="veg-page">
+  </div>
 
-        <div class="veg-header">
-
-            <div class="small-title">
-                Fresh Vegetarian Meals
-            </div>
-
-            <h1>
-                Choose Your Favourite Veg Plate 🥗
-            </h1>
-
-            <p>
-                Fresh, homemade vegetarian meals prepared
-                with delicious ingredients and care.
-            </p>
-
-        </div>
-
-
-        <!-- MEALS -->
-
-        <div class="veg-grid">
-
-
-            <!-- CLASSIC VEG -->
-
-            <article class="veg-card">
-
-                <div class="veg-image">
-
-                    <img
-                        src="veg.jpg"
-                        alt="Classic Veg Tiffin">
-
-                    <span>
-                        Popular
-                    </span>
-
-                </div>
-
-                <div class="veg-content">
-
-                    <h2>
-                        Classic Veg
-                    </h2>
-
-                    <p>
-                        2 Roti, seasonal sabzi,
-                        rice and fresh salad.
-                    </p>
-
-                    <div class="veg-bottom">
-
-                        <strong>
-                            ₹99
-                            <small>/ Meal</small>
-                        </strong>
-
-                        <a
-                            href="customer.html"
-                            class="veg-order-btn">
-                            Order Now →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- PANEER -->
-
-            <article class="veg-card">
-
-                <div class="veg-image">
-
-                    <img
-                        src="paneer1.png"
-                        alt="Paneer Veg Plate">
-
-                </div>
-
-                <div class="veg-content">
-
-                    <h2>
-                        Paneer Veg Plate
-                    </h2>
-
-                    <p>
-                        Delicious paneer curry,
-                        roti, rice and salad.
-                    </p>
-
-                    <div class="veg-bottom">
-
-                        <strong>
-                            ₹119
-                            <small>/ Meal</small>
-                        </strong>
-
-                        <a
-                            href="customer.html"
-                            class="veg-order-btn">
-                            Order Now →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- SPECIAL THALI -->
-
-            <article class="veg-card">
-
-                <div class="veg-image">
-
-                    <img
-                        src="thali1.jpg"
-                        alt="Special Veg Thali">
-
-                </div>
-
-                <div class="veg-content">
-
-                    <h2>
-                        Special Veg Thali
-                    </h2>
-
-                    <p>
-                        Complete homemade thali
-                        with multiple tasty dishes.
-                    </p>
-
-                    <div class="veg-bottom">
-
-                        <strong>
-                            ₹149
-                            <small>/ Meal</small>
-                        </strong>
-
-                        <a
-                            href="customer.html"
-                            class="veg-order-btn">
-                            Order Now →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- HEALTHY -->
-
-            <article class="veg-card">
-
-                <div class="veg-image">
-
-                    <img
-                        src="thali2.jpg"
-                        alt="Healthy Veg Meal">
-
-                    <span>
-                        Healthy
-                    </span>
-
-                </div>
-
-                <div class="veg-content">
-
-                    <h2>
-                        Healthy Veg Meal
-                    </h2>
-
-                    <p>
-                        Balanced vegetarian meal
-                        made with fresh ingredients.
-                    </p>
-
-                    <div class="veg-bottom">
-
-                        <strong>
-                            ₹129
-                            <small>/ Meal</small>
-                        </strong>
-
-                        <a
-                            href="customer.html"
-                            class="veg-order-btn">
-                            Order Now →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 Smart Tiffin. All Rights Reserved.
-            </p>
-
-        </div>
-
-    </footer>
-
-
-    <script src="js/script.js"></script>
+</section>
 
 </body>
-
 </html>
