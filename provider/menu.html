@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Menu</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <h2>🍱 Manage Menu</h2>
+  <a href="dashboard.html">Dashboard</a>
+</header>
+
+<section class="popular">
+  <h2>Add New Meal</h2>
+
+  <form class="login-box">
+    <input type="text" placeholder="Meal Name" required>
+
+    <select required>
+      <option>Rice</option>
+      <option>Paneer</option>
+      <option>Paratha</option>
+      <option>Roti</option>
+      <option>Special Thali</option>
+    </select>
+
+    <input type="number" placeholder="Price ₹" required>
+
+    <button type="submit">Add Meal</button>
+  </form>
+
+  <h2>Available Meals</h2>
+
+  <div class="grid">
+    <div class="card">
+      <img src="../shahi_paneer.jpg" alt="">
+      <h3>Shahi Paneer</h3>
+      <p>₹149</p>
+    </div>
+
+    <div class="card">
+      <img src="../dal_rice.jpg" alt="">
+      <h3>Dal Rice</h3>
+      <p>₹79</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
