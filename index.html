@@ -9,130 +9,93 @@
 <body>
 
 <header class="navbar">
-  <a href="index.html" class="logo">
-    <h2>🍱 Smart Tiffin</h2>
-  </a>
-
+  <h2>🍱 Smart Tiffin</h2>
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="menu.html">Menu</a>
-    <a href="#plans">Plans</a>
+    <a href="customer/menu.html">Menu</a>
     <a href="#contact">Contact</a>
     <a href="login.html">Login</a>
-    <a href="register.html">Sign Up</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
-  <div class="hero-content">
-    <h1>Good Food <span>Brighter Days!</span></h1>
-    <p>Fresh Homemade Meals from Local Tiffin Providers Near You.</p>
+  <div class="overlay">
+    <h1>Good Food, Brighter Days!</h1>
+    <p>Fresh homemade meals from trusted local providers.</p>
 
     <div class="search-box">
-      <select id="location">
-        <option value="">📍 Select Location</option>
-
-        <optgroup label="Hoshiarpur">
-          <option>Hoshiarpur City</option>
-          <option>Garhshankar</option>
-          <option>Mahilpur</option>
-          <option>Kot Fatuhi</option>
-          <option>Chabewal</option>
-          <option>Tuto Mazara</option>
-          <option>Binewal</option>
-          <option>Bulhowal</option>
-          <option>Hariana</option>
-          <option>Hajipur</option>
-        </optgroup>
-
-        <optgroup label="Phagwara">
-          <option>Phagwara City</option>
-          <option>Palahi</option>
-          <option>Satnampura</option>
-          <option>Chachoki</option>
-          <option>Khothran</option>
-          <option>Jagatpura</option>
-          <option>Rawalpindi</option>
-          <option>Mehat</option>
-        </optgroup>
+      <select>
+        <option>Hoshiarpur</option>
+        <option>Garhshankar</option>
+        <option>Mahilpur</option>
+        <option>Kot Fatuhi</option>
+        <option>Chabewal</option>
+        <option>Tuto Mazara</option>
+        <option>Phagwara</option>
       </select>
 
-      <select id="meal">
+      <select>
         <option>Veg</option>
-        <option>Non-Veg</option>
         <option>Healthy</option>
       </select>
 
-      <button onclick="searchTiffin()">Search</button>
+      <button>Search</button>
     </div>
 
-    <br>
-    <a href="menu.html" class="primary-btn">Explore Meals</a>
+    <a href="customer/menu.html" class="btn">Explore Menu</a>
   </div>
 </section>
 
-<section class="providers" id="providers">
-  <h2>Popular Meals</h2>
+<section id="about" class="about">
+  <img src="hero.jpg" alt="About Smart Tiffin">
+  <div>
+    <h2>About Smart Tiffin</h2>
+    <p>Choose fresh homemade food prepared by trusted local tiffin providers.</p>
+  </div>
+</section>
 
-  <div class="provider-grid">
-    <article class="card">
-      <img src="dal.jpg" alt="Dal Chawal">
-      <h3>Dal Chawal</h3>
-      <p>From ₹79</p>
-      <a href="dal-chawal.html">View Meal</a>
-    </article>
+<section class="popular">
+  <h2>Popular Categories</h2>
 
-    <article class="card">
-      <img src="paneer.jpg" alt="Paneer Meal">
-      <h3>Paneer Meal</h3>
-      <p>From ₹129</p>
-      <a href="paneer.html">View Meal</a>
-    </article>
+  <div class="grid">
 
-    <article class="card">
-      <img src="spl_thali.jpg" alt="Special Thali">
+    <div class="card">
+      <img src="jeerarice.jpg" alt="">
+      <h3>Rice Meals</h3>
+      <a href="customer/dal-chawal.html">View</a>
+    </div>
+
+    <div class="card">
+      <img src="shahi_paneer.jpg" alt="">
+      <h3>Paneer Meals</h3>
+      <a href="customer/paneer.html">View</a>
+    </div>
+
+    <div class="card">
+      <img src="gobi_paratha.jpg" alt="">
+      <h3>Paratha</h3>
+      <a href="customer/menu.html">View</a>
+    </div>
+
+    <div class="card">
+      <img src="roti_bhindi.jpg" alt="">
+      <h3>Roti Meals</h3>
+      <a href="customer/menu.html">View</a>
+    </div>
+
+    <div class="card">
+      <img src="thali2.jpg" alt="">
       <h3>Special Thali</h3>
-      <p>From ₹199</p>
-      <a href="special-thali.html">View Meal</a>
-    </article>
+      <a href="customer/special-thali.html">View</a>
+    </div>
+
   </div>
 </section>
 
-<section class="plans" id="plans">
-  <h2>Choose Your Plan</h2>
-
-  <div class="plan-grid">
-    <div class="plan-card">
-      <h3>Daily</h3>
-      <p>₹99</p>
-      <a href="customer.html">Order Now</a>
-    </div>
-
-    <div class="plan-card">
-      <h3>Weekly</h3>
-      <p>₹649</p>
-      <a href="customer.html">Choose Plan</a>
-    </div>
-
-    <div class="plan-card">
-      <h3>Monthly</h3>
-      <p>₹2499</p>
-      <a href="customer.html">Choose Plan</a>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <h2>Contact</h2>
-  <p>📧 smarttiffin@gmail.com</p>
+<footer id="contact">
+  <p>📍 Garhshankar, Hoshiarpur</p>
   <p>📞 +91 98765 43210</p>
-  <p>📍 Garhshankar, Punjab</p>
-</section>
-
-<footer class="footer">
-  <h3>🍱 Smart Tiffin</h3>
-  <p>© 2026 Smart Tiffin</p>
 </footer>
 
 <script src="js/script.js"></script>
