@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Tiffin | Homemade Food</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Tiffin</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header class="navbar">
   <a href="index.html" class="logo">
-    <div class="logo-icon">🍱</div>
-    <div>
-      <h2>Smart Tiffin</h2>
-      <p>Homemade Food, Happier You!</p>
-    </div>
+    <h2>🍱 Smart Tiffin</h2>
   </a>
 
   <nav>
@@ -24,170 +19,119 @@
     <a href="menu.html">Menu</a>
     <a href="#plans">Plans</a>
     <a href="#contact">Contact</a>
-    <a href="login.html" class="login">Login</a>
-    <a href="register.html" class="signup">Sign Up</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Sign Up</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
   <div class="hero-content">
-    <span class="badge">🍃 Fresh • Homemade • Trusted</span>
-
-    <h1>Good Food.<br><span>Brighter Days!</span></h1>
-
-    <p>Fresh homemade meals from trusted local tiffin providers.</p>
-
-    <div class="hero-buttons">
-      <a href="#providers" class="primary-btn">Explore Meals</a>
-      <a href="menu.html" class="secondary-btn">View Full Menu</a>
-    </div>
+    <h1>Good Food <span>Brighter Days!</span></h1>
+    <p>Fresh Homemade Meals from Local Tiffin Providers Near You.</p>
 
     <div class="search-box">
-      <input type="text" placeholder="Enter your location">
-      <select>
+      <select id="location">
+        <option value="">📍 Select Location</option>
+
+        <optgroup label="Hoshiarpur">
+          <option>Hoshiarpur City</option>
+          <option>Garhshankar</option>
+          <option>Mahilpur</option>
+          <option>Kot Fatuhi</option>
+          <option>Chabewal</option>
+          <option>Tuto Mazara</option>
+          <option>Binewal</option>
+          <option>Bulhowal</option>
+          <option>Hariana</option>
+          <option>Hajipur</option>
+        </optgroup>
+
+        <optgroup label="Phagwara">
+          <option>Phagwara City</option>
+          <option>Palahi</option>
+          <option>Satnampura</option>
+          <option>Chachoki</option>
+          <option>Khothran</option>
+          <option>Jagatpura</option>
+          <option>Rawalpindi</option>
+          <option>Mehat</option>
+        </optgroup>
+      </select>
+
+      <select id="meal">
         <option>Veg</option>
         <option>Non-Veg</option>
         <option>Healthy</option>
       </select>
-      <button>Search</button>
-    </div>
-  </div>
-</section>
 
-<section class="trust-bar">
-  <div>🥗 Fresh Ingredients</div>
-  <div>🏠 Homemade Meals</div>
-  <div>🚚 Easy Delivery</div>
-  <div>⭐ Trusted Providers</div>
-</section>
-
-<section class="about" id="about">
-  <div class="section-heading">
-    <div class="small-title">ABOUT SMART TIFFIN</div>
-    <h2>Homemade food, made for your everyday life</h2>
-    <p>Fresh homemade meals from trusted local providers.</p>
-  </div>
-
-  <div class="about-content">
-    <div class="about-image">
-      <img src="bg-food.jpg" alt="About">
+      <button onclick="searchTiffin()">Search</button>
     </div>
 
-    <div class="about-text">
-      <h3>Food that feels like home ❤️</h3>
-
-      <p>Choose your favourite meal, affordable plan and enjoy homemade food every day.</p>
-
-      <div class="stats">
-        <div class="stat"><h3>100+</h3><p>Meals</p></div>
-        <div class="stat"><h3>50+</h3><p>Providers</p></div>
-        <div class="stat"><h3>4.9★</h3><p>Rating</p></div>
-      </div>
-    </div>
+    <br>
+    <a href="menu.html" class="primary-btn">Explore Meals</a>
   </div>
 </section>
 
 <section class="providers" id="providers">
-  <div class="section-heading">
-    <div class="small-title">POPULAR CHOICES</div>
-    <h2>Delicious Meals From Trusted Providers</h2>
-  </div>
+  <h2>Popular Meals</h2>
 
   <div class="provider-grid">
-
     <article class="card">
-      <img src="veg.jpg" alt="">
-      <div class="price-tag">₹99</div>
-      <div class="card-content">
-        <h3>Classic Veg Tiffin</h3>
-        <p>Roti • Sabzi • Rice • Dal • Salad</p>
-        <a href="classic-veg.html" class="card-btn">View Meal</a>
-      </div>
+      <img src="dal.jpg" alt="Dal Chawal">
+      <h3>Dal Chawal</h3>
+      <p>From ₹79</p>
+      <a href="dal-chawal.html">View Meal</a>
     </article>
 
     <article class="card">
-      <img src="paneer.jpg" alt="">
-      <div class="price-tag">₹129</div>
-      <div class="card-content">
-        <h3>Paneer Meal</h3>
-        <p>Paneer • Roti • Rice • Salad</p>
-        <a href="menu.html" class="card-btn">View Meal</a>
-      </div>
+      <img src="paneer.jpg" alt="Paneer Meal">
+      <h3>Paneer Meal</h3>
+      <p>From ₹129</p>
+      <a href="paneer.html">View Meal</a>
     </article>
 
     <article class="card">
-      <img src="spl_thali.jpg" alt="">
-      <div class="price-tag">₹199</div>
-      <div class="card-content">
-        <h3>Special Thali</h3>
-        <p>Restaurant Style Punjabi Thali</p>
-        <a href="menu.html" class="card-btn">View Meal</a>
-      </div>
+      <img src="spl_thali.jpg" alt="Special Thali">
+      <h3>Special Thali</h3>
+      <p>From ₹199</p>
+      <a href="special-thali.html">View Meal</a>
     </article>
-
-  </div>
-
-  <div class="section-action">
-    <a href="menu.html" class="primary-btn">View All Meals →</a>
   </div>
 </section>
 
 <section class="plans" id="plans">
-  <div class="section-heading">
-    <div class="small-title">MEAL PLANS</div>
-    <h2>Choose Your Plan</h2>
-  </div>
+  <h2>Choose Your Plan</h2>
 
   <div class="plan-grid">
-
-    <article class="plan-card">
+    <div class="plan-card">
       <h3>Daily</h3>
-      <div class="plan-price">₹99</div>
-      <a href="customer.html" class="plan-btn">Order Now</a>
-    </article>
+      <p>₹99</p>
+      <a href="customer.html">Order Now</a>
+    </div>
 
-    <article class="plan-card popular">
+    <div class="plan-card">
       <h3>Weekly</h3>
-      <div class="plan-price">₹649</div>
-      <a href="customer.html" class="plan-btn">Choose Plan</a>
-    </article>
+      <p>₹649</p>
+      <a href="customer.html">Choose Plan</a>
+    </div>
 
-    <article class="plan-card">
+    <div class="plan-card">
       <h3>Monthly</h3>
-      <div class="plan-price">₹2499</div>
-      <a href="customer.html" class="plan-btn">Choose Plan</a>
-    </article>
-
+      <p>₹2499</p>
+      <a href="customer.html">Choose Plan</a>
+    </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
-  <div class="section-heading">
-    <div class="small-title">CONTACT</div>
-    <h2>Get in Touch</h2>
-  </div>
-
-  <div class="contact-wrapper">
-
-    <div class="contact-info">
-      <p>📧 smarttiffin@gmail.com</p>
-      <p>📞 +91 98765 43210</p>
-      <p>📍 Garhshankar, Punjab</p>
-    </div>
-
-    <form class="contact-form">
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-
-  </div>
+  <h2>Contact</h2>
+  <p>📧 smarttiffin@gmail.com</p>
+  <p>📞 +91 98765 43210</p>
+  <p>📍 Garhshankar, Punjab</p>
 </section>
 
 <footer class="footer">
   <h3>🍱 Smart Tiffin</h3>
-  <p>Homemade Food Made Easier.</p>
   <p>© 2026 Smart Tiffin</p>
 </footer>
 
