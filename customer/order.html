@@ -1,32 +1,365 @@
-<select required>
-  <option value="">📍 Select Your Area</option>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartTiffin | Order Food</title>
 
-  <optgroup label="Hoshiarpur District">
-    <option>Hoshiarpur City</option>
-    <option>Garhshankar</option>
-    <option>Mahilpur</option>
-    <option>Chabewal</option>
-    <option>Kot Fatuhi</option>
-    <option>Tuto Mazara</option>
-    <option>Hariana</option>
-    <option>Bulhowal</option>
-    <option>Hajipur</option>
-    <option>Mukerian</option>
-    <option>Dasuya</option>
-    <option>Talwara</option>
-    <option>Sham Churasi</option>
-  </optgroup>
+<style>
+* { box-sizing: border-box; }
 
-  <optgroup label="Phagwara Area">
-    <option>Phagwara City</option>
-    <option>Satnampura</option>
-    <option>Chachoki</option>
-    <option>Palahi</option>
-    <option>Khothran</option>
-    <option>Jagatpura</option>
-    <option>Rawalpindi</option>
-    <option>Mehat</option>
-    <option>Virk</option>
-    <option>Rehana Jattan</option>
-  </optgroup>
-</select>
+body {
+  margin: 0;
+  padding: 20px 12px;
+  font-family: Arial, sans-serif;
+  color: #29352b;
+  background: linear-gradient(135deg, #e3f2df, #fff4df, #f8f5ee);
+}
+
+.container {
+  max-width: 600px;
+  margin: 12px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px #234b2920;
+}
+
+.header {
+  text-align: center;
+  background: linear-gradient(120deg, #176b3a, #26964f);
+  color: white;
+  padding: 23px 12px;
+  border-radius: 15px;
+}
+
+.header h1 { margin: 0 0 8px; }
+.header p { margin: 0; }
+
+h2 { color: #176b3a; }
+
+label {
+  display: block;
+  margin-top: 17px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  padding: 13px;
+  font-size: 16px;
+  border: 1px solid #d4ded4;
+  border-radius: 10px;
+  background: #fff;
+}
+
+input[readonly] {
+  background: #f0f7ef;
+  font-weight: bold;
+  color: #176b3a;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 12px;
+}
+
+.quantity button {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 12px;
+  background: #176b3a;
+  color: white;
+  font-size: 25px;
+}
+
+#qty {
+  width: 75px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.summary {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff4d9, #fffaf0);
+  border: 1px solid #f4dfb3;
+}
+
+.summary h3 { margin-top: 0; color: #176b3a; }
+
+.summary p {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.grand-total {
+  padding-top: 12px;
+  border-top: 1px dashed #c8b58d;
+  font-size: 23px;
+  color: #176b3a;
+  font-weight: bold;
+}
+
+.submit {
+  width: 100%;
+  padding: 16px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ed8122, #f4a13e);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.back {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  color: #176b3a;
+  text-decoration: none;
+}
+
+#result {
+  display: none;
+  margin-top: 22px;
+  padding: 18px;
+  background: #e8f7e9;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🍱 SmartTiffin</h1>
+    <p>Fresh Food • Made With Love</p>
+  </div>
+
+  <h2>🛒 Complete Your Order</h2>
+  <p>Check your meal, select plates and enter delivery details.</p>
+
+  <form id="orderForm">
+
+    <label for="meal">Selected Meal</label>
+    <input id="meal" name="meal" readonly required>
+
+    <label for="price">Price Per Plate</label>
+    <input id="price" readonly>
+
+    <label for="qty">Number of Plates</label>
+    <div class="quantity">
+      <button type="button" id="minus" aria-label="Remove one plate">−</button>
+      <input id="qty" type="number" value="1" min="1" max="50" required>
+      <button type="button" id="plus" aria-label="Add one plate">+</button>
+    </div>
+
+    <div class="summary">
+      <h3>🧾 Order Summary</h3>
+      <p><span>Meal</span><strong id="sumMeal">—</strong></p>
+      <p><span>Price per plate</span><strong id="sumPrice">₹0</strong></p>
+      <p><span>Number of plates</span><strong id="sumQty">1</strong></p>
+      <p class="grand-total">
+        <span>Total</span>
+        <span id="total">₹0</span>
+      </p>
+    </div>
+
+    <h2>📍 Delivery Details</h2>
+
+    <label for="customer">Customer Name</label>
+    <input id="customer" required placeholder="Enter full name">
+
+    <label for="phone">Mobile Number</label>
+    <input id="phone" type="tel" inputmode="numeric"
+      pattern="[0-9]{10}" maxlength="10"
+      required placeholder="10-digit mobile number">
+
+    <label for="area">Select Your Area</label>
+    <select id="area" required>
+      <option value="">📍 Select Your Area</option>
+      <optgroup label="Hoshiarpur District">
+        <option>Hoshiarpur City</option>
+        <option>Garhshankar</option>
+        <option>Mahilpur</option>
+        <option>Chabewal</option>
+        <option>Kot Fatuhi</option>
+        <option>Tuto Mazara</option>
+        <option>Hariana</option>
+        <option>Bulhowal</option>
+        <option>Hajipur</option>
+        <option>Mukerian</option>
+        <option>Dasuya</option>
+        <option>Talwara</option>
+        <option>Sham Churasi</option>
+      </optgroup>
+      <optgroup label="Phagwara Area">
+        <option>Phagwara City</option>
+        <option>Satnampura</option>
+        <option>Chachoki</option>
+        <option>Palahi</option>
+        <option>Khothran</option>
+        <option>Jagatpura</option>
+        <option>Rawalpindi</option>
+        <option>Mehat</option>
+        <option>Virk</option>
+        <option>Rehana Jattan</option>
+      </optgroup>
+    </select>
+
+    <label for="address">Complete Delivery Address</label>
+    <textarea id="address" rows="3" required
+      placeholder="House number, street, village and landmark"></textarea>
+
+    <label for="instructions">Special Instructions (Optional)</label>
+    <textarea id="instructions" rows="2"
+      placeholder="Any extra instructions"></textarea>
+
+    <button class="submit" type="submit">Confirm Demo Order ✓</button>
+  </form>
+
+  <div id="result" role="status"></div>
+
+  <a class="back" href="../index.html">← Back to Home</a>
+
+  <p class="note">
+    Demo only: this form displays a confirmation but does not save
+    the order to a database or send it to the restaurant.
+  </p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const meal = document.getElementById("meal");
+const priceInput = document.getElementById("price");
+const qty = document.getElementById("qty");
+const result = document.getElementById("result");
+
+const nameFromURL = params.get("meal") || "";
+const priceFromURL = Number(params.get("price"));
+
+/* Only accept meal names and prices listed in this demo menu. */
+const menu = {
+  "Dal Rice": 79,
+  "Dal Rice + Salad": 99,
+  "Rajma Rice": 109,
+  "Kadhi Chawal": 99,
+  "Dal Makhni Rice": 119,
+  "Shahi Paneer": 149,
+  "Kadai Paneer": 139,
+  "Matar Paneer": 129,
+  "Paneer thali": 139,
+  "Paneer thali2": 149,
+  "Paneer Maharaja": 169,
+  "Veg Thali": 179,
+  "Punjabi Thali": 199,
+  "Deluxe Thali": 229,
+  "Family Thali": 249,
+  "Mini Veg Thali": 149,
+  "Smart Tiffin Box": 129
+};
+
+let unitPrice = 0;
+
+if (Object.prototype.hasOwnProperty.call(menu, nameFromURL) &&
+    menu[nameFromURL] === priceFromURL) {
+  meal.value = nameFromURL;
+  unitPrice = priceFromURL;
+} else {
+  meal.value = "";
+  result.style.display = "block";
+  result.textContent =
+    "Please open this page using the Order Now button on a meal card.";
+}
+
+priceInput.value = unitPrice ? "₹" + unitPrice : "Please select from menu";
+
+function updateTotal() {
+  let count = Math.max(1, Math.min(50, Number(qty.value) || 1));
+  qty.value = count;
+
+  document.getElementById("sumMeal").textContent =
+    meal.value || "Not selected";
+  document.getElementById("sumPrice").textContent = "₹" + unitPrice;
+  document.getElementById("sumQty").textContent = count;
+  document.getElementById("total").textContent =
+    "₹" + (unitPrice * count);
+}
+
+document.getElementById("minus").addEventListener("click", () => {
+  qty.value = Math.max(1, Number(qty.value) - 1);
+  updateTotal();
+});
+
+document.getElementById("plus").addEventListener("click", () => {
+  qty.value = Math.min(50, Number(qty.value) + 1);
+  updateTotal();
+});
+
+qty.addEventListener("input", updateTotal);
+
+document.getElementById("orderForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  if (!unitPrice || !meal.value) {
+    alert("Please select a meal using its Order Now button.");
+    return;
+  }
+
+  if (!event.currentTarget.reportValidity()) return;
+
+  result.replaceChildren();
+
+  const heading = document.createElement("h3");
+  heading.textContent = "✅ Demo Order Confirmed!";
+
+  const details = [
+    "Customer: " + document.getElementById("customer").value,
+    "Meal: " + meal.value,
+    "Plates: " + qty.value,
+    "Total: ₹" + (unitPrice * Number(qty.value)),
+    "Mobile: " + document.getElementById("phone").value,
+    "Area: " + document.getElementById("area").value,
+    "Address: " + document.getElementById("address").value
+  ];
+
+  result.appendChild(heading);
+
+  details.forEach(text => {
+    const p = document.createElement("p");
+    p.textContent = text;
+    result.appendChild(p);
+  });
+
+  const note = document.createElement("p");
+  note.textContent =
+    "Demo confirmation only. Your order has not been sent to the restaurant.";
+  result.appendChild(note);
+
+  result.style.display = "block";
+  result.scrollIntoView({ behavior: "smooth" });
+});
+
+updateTotal();
+</script>
+</body>
+</html>
