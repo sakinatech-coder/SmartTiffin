@@ -1,129 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartTiffin - Order</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Roboto,Arial,sans-serif;background:linear-gradient(135deg,#e8f5e9,#fff8e1);min-height:100vh;padding:16px;color:#222}
+  .card{max-width:520px;margin:0 auto;background:#fff;border-radius:20px;padding:24px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+  .brand{background:linear-gradient(135deg,#166534,#16a34a);color:#fff;text-align:center;padding:20px;border-radius:14px;margin-bottom:18px}
+  .brand h1{font-size:26px}
+  .brand p{font-size:14px;margin-top:4px}
+  h2{color:#166534;font-size:20px;margin:16px 0 6px}
+  label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
+  input,select,textarea{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:10px;font-size:15px;background:#fff}
+  input[readonly]{background:#eef7ee;color:#166534;font-weight:600}
+  textarea{resize:vertical;min-height:70px}
+  .qty{display:flex;justify-content:center;align-items:center;gap:14px}
+  .qty button{width:50px;height:50px;border:none;border-radius:10px;background:#166534;color:#fff;font-size:24px;cursor:pointer}
+  .qty input{width:80px;text-align:center;font-weight:700}
+  .summary{background:#fff8e1;border:1px solid #fde7b0;border-radius:12px;padding:18px;margin-top:18px}
+  .summary h3{color:#166534;margin-bottom:10px}
+  .row{display:flex;justify-content:space-between;padding:6px 0;font-size:15px}
+  .total{border-top:1px dashed #ccc;margin-top:8px;padding-top:12px;font-size:22px;font-weight:700;color:#166534}
+  .confirm{width:100%;margin-top:22px;padding:15px;border:none;border-radius:10px;background:linear-gradient(135deg,#ea7a0f,#f59e30);color:#fff;font-size:17px;font-weight:700;cursor:pointer}
+  .msg{margin-top:16px;padding:14px;border-radius:10px;font-size:15px;display:none}
+  .msg.ok{display:block;background:#e8f5e9;color:#166534}
+  .msg.err{display:block;background:#fdecea;color:#b91c1c}
+  .back{display:block;text-align:center;margin-top:16px;color:#166534;text-decoration:none}
+  .demo{font-size:12px;color:#666;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand">
+    <h1>🍱 SmartTiffin</h1>
+    <p>Fresh Food • Made With Love</p>
+  </div>
+
+  <h2>🛒 Complete Your Order</h2>
+  <p style="font-size:14px">Check your meal, select plates and enter delivery details.</p>
+
+  <label for="mealSelect">Selected Meal</label>
+  <select id="mealSelect"></select>
+
+  <label for="price">Price Per Plate</label>
+  <input id="price" type="text" readonly value="Please select a meal">
+
+  <label>Number of Plates</label>
+  <div class="qty">
+    <button type="button" id="minus">−</button>
+    <input id="qty" type="number" min="1" max="20" value="1">
+    <button type="button" id="plus">+</button>
+  </div>
+
+  <div class="summary">
+    <h3>🧾 Order Summary</h3>
+    <div class="row"><span>Meal</span><b id="sMeal">Not selected</b></div>
+    <div class="row"><span>Price per plate</span><b id="sPrice">₹0</b></div>
+    <div class="row"><span>Number of plates</span><b id="sQty">1</b></div>
+    <div class="row total"><span>Total</span><span id="sTotal">₹0</span></div>
+  </div>
+
+  <h2>📍 Delivery Details</h2>
+  <label for="name">Customer Name</label>
+  <input id="name" type="text" placeholder="Enter full name">
+
+  <label for="mobile">Mobile Number</label>
+  <input id="mobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10-digit mobile number">
+
+  <label for="area">Select Your Area</label>
+  <select id="area">
+    <option value="">📍 Select Your Area</option>
+    <option>Garhshankar City</option>
+    <option>Garhshankar Bus Stand</option>
+    <option>Hoshiarpur Road</option>
+    <option>Nearby Villages</option>
+  </select>
+
+  <label for="address">Complete Delivery Address</label>
+  <textarea id="address" placeholder="House number, street, village and landmark"></textarea>
+
+  <label for="notes">Special Instructions (Optional)</label>
+  <textarea id="notes" placeholder="Any extra instructions"></textarea>
+
+  <button class="confirm" id="confirmBtn" type="button">Confirm Demo Order ✓</button>
+  <div class="msg" id="msg"></div>
+
+  <a class="back" href="index.html">← Back to Home</a>
+  <p class="demo">Demo only: this form displays a confirmation but does not save the order to a database or send it to the restaurant.</p>
+</div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
+  // ===== Saare meals (naam + price) =====
+  const MENU = {
+    "Rice Meals": {
+      "Dal Rice": 79,
+      "Dal Rice + Salad": 99,
+      "Rajma Rice": 109,
+      "Kadhi Chawal": 99,
+      "Dal Makhni Rice": 119
+    },
+    "Paneer Meals": {
+      "Shahi Paneer": 149,
+      "Kadai Paneer": 139,
+      "Matar Paneer": 129,
+      "Paneer thali": 139,
+      "Paneer thali2": 149,
+      "Paneer Maharaja": 169
+    },
+    "Special Thali": {
+      "Veg Thali": 179,
+      "Punjabi Thali": 199,
+      "Deluxe Thali": 229,
+      "Family Thali": 249,
+      "Mini Veg Thali": 149,
+      "Smart Tiffin Box": 129
+    }
+    // Paratha aur Roti Meals di list ethe ae add kar lao:
+    // ,"Paratha": { "Aloo Paratha": 60, ... }
+  };
 
-const meal = document.getElementById("meal");
-const priceInput = document.getElementById("price");
-const qty = document.getElementById("qty");
-const result = document.getElementById("result");
+  const $ = id => document.getElementById(id);
+  const mealSelect = $("mealSelect");
 
-const nameFromURL = params.get("meal") || "";
-const priceFromURL = Number(params.get("price"));
-
-const menu = {
-  "Dal Rice": 79,
-  "Dal Rice + Salad": 99,
-  "Rajma Rice": 109,
-  "Kadhi Chawal": 99,
-  "Dal Makhni Rice": 119,
-  "Shahi Paneer": 149,
-  "Kadai Paneer": 139,
-  "Matar Paneer": 129,
-  "Paneer thali": 139,
-  "Paneer thali2": 149,
-  "Paneer Maharaja": 169,
-  "Veg Thali": 179,
-  "Punjabi Thali": 199,
-  "Deluxe Thali": 229,
-  "Family Thali": 249,
-  "Mini Veg Thali": 149,
-  "Smart Tiffin Box": 129
-};
-
-let unitPrice = 0;
-
-if (
-  Object.prototype.hasOwnProperty.call(menu, nameFromURL) &&
-  menu[nameFromURL] === priceFromURL
-) {
-  meal.value = nameFromURL;
-  unitPrice = priceFromURL;
-} else {
-  meal.value = "";
-  result.style.display = "block";
-  result.textContent =
-    "Please open this page using the Order Now button on a meal card.";
-}
-
-priceInput.value = unitPrice
-  ? "₹" + unitPrice
-  : "Please select from menu";
-
-function updateTotal() {
-  const count = Math.max(
-    1,
-    Math.min(50, Number(qty.value) || 1)
-  );
-
-  qty.value = count;
-
-  document.getElementById("sumMeal").textContent =
-    meal.value || "Not selected";
-
-  document.getElementById("sumPrice").textContent =
-    "₹" + unitPrice;
-
-  document.getElementById("sumQty").textContent = count;
-
-  document.getElementById("total").textContent =
-    "₹" + unitPrice * count;
-}
-
-document.getElementById("minus").addEventListener("click", () => {
-  qty.value = Math.max(1, Number(qty.value) - 1);
-  updateTotal();
-});
-
-document.getElementById("plus").addEventListener("click", () => {
-  qty.value = Math.min(50, Number(qty.value) + 1);
-  updateTotal();
-});
-
-qty.addEventListener("input", updateTotal);
-
-document.getElementById("orderForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  if (!unitPrice || !meal.value) {
-    alert("Please select a meal using its Order Now button.");
-    return;
-  }
-
-  if (!event.currentTarget.reportValidity()) return;
-
-  result.replaceChildren();
-
-  const heading = document.createElement("h3");
-  heading.textContent = "✅ Demo Order Confirmed!";
-  result.appendChild(heading);
-
-  const details = [
-    "Customer: " + document.getElementById("customer").value,
-    "Meal: " + meal.value,
-    "Price per plate: ₹" + unitPrice,
-    "Plates: " + qty.value,
-    "Total: ₹" + unitPrice * Number(qty.value),
-    "Mobile: " + document.getElementById("phone").value,
-    "Area: " + document.getElementById("area").value,
-    "Address: " + document.getElementById("address").value
-  ];
-
-  details.forEach(detail => {
-    const p = document.createElement("p");
-    p.textContent = detail;
-    result.appendChild(p);
+  // Dropdown bharo
+  mealSelect.innerHTML = '<option value="">-- Select Meal --</option>';
+  Object.keys(MENU).forEach(cat => {
+    const g = document.createElement("optgroup");
+    g.label = cat;
+    Object.keys(MENU[cat]).forEach(m => {
+      const o = document.createElement("option");
+      o.value = m;
+      o.textContent = m + " - ₹" + MENU[cat][m];
+      g.appendChild(o);
+    });
+    mealSelect.appendChild(g);
   });
 
-  const note = document.createElement("p");
-  note.textContent =
-    "Demo confirmation only. Your order has not been sent to the restaurant.";
-  result.appendChild(note);
+  function priceOf(meal){
+    for (const cat in MENU) if (meal in MENU[cat]) return MENU[cat][meal];
+    return 0;
+  }
 
-  result.style.display = "block";
-  result.scrollIntoView({ behavior: "smooth" });
-});
+  function update(){
+    const meal = mealSelect.value;
+    const price = priceOf(meal);
+    let qty = parseInt($("qty").value, 10);
+    if (isNaN(qty) || qty < 1) qty = 1;
+    if (qty > 20) qty = 20;
+    $("qty").value = qty;
 
-updateTotal();
+    $("price").value = meal ? "₹" + price : "Please select a meal";
+    $("sMeal").textContent = meal || "Not selected";
+    $("sPrice").textContent = "₹" + price;
+    $("sQty").textContent = qty;
+    $("sTotal").textContent = "₹" + (price * qty);
+  }
+
+  // URL ton meal te price lao: order.html?meal=Dal%20Rice&price=79
+  const params = new URLSearchParams(location.search);
+  const urlMeal = params.get("meal");
+  if (urlMeal && priceOf(urlMeal)) {
+    mealSelect.value = urlMeal;
+  } else if (urlMeal) {
+    // menu list ch nahi, par URL ch price hai
+    const p = parseInt(params.get("price"), 10);
+    if (p) {
+      const o = document.createElement("option");
+      o.value = urlMeal; o.textContent = urlMeal + " - ₹" + p;
+      mealSelect.appendChild(o);
+      mealSelect.value = urlMeal;
+      MENU["Other"] = MENU["Other"] || {};
+      MENU["Other"][urlMeal] = p;
+    }
+  }
+
+  mealSelect.addEventListener("change", update);
+  $("qty").addEventListener("input", update);
+  $("plus").addEventListener("click", () => { $("qty").value = (parseInt($("qty").value,10)||1) + 1; update(); });
+  $("minus").addEventListener("click", () => { $("qty").value = Math.max(1, (parseInt($("qty").value,10)||1) - 1); update(); });
+  $("mobile").addEventListener("input", e => { e.target.value = e.target.value.replace(/\D/g, ""); });
+
+  function show(text, ok){
+    const m = $("msg");
+    m.className = "msg " + (ok ? "ok" : "err");
+    m.innerHTML = text;
+    m.scrollIntoView({behavior:"smooth", block:"center"});
+  }
+
+  $("confirmBtn").addEventListener("click", () => {
+    const meal = mealSelect.value;
+    const name = $("name").value.trim();
+    const mobile = $("mobile").value.trim();
+    const area = $("area").value;
+    const address = $("address").value.trim();
+
+    if (!meal) return show("Pehla koi meal select karo.", false);
+    if (name.length < 2) return show("Apna poora naam likho.", false);
+    if (!/^[6-9]\d{9}$/.test(mobile)) return show("Sahi 10-digit mobile number paao.", false);
+    if (!area) return show("Apna area select karo.", false);
+    if (address.length < 8) return show("Poora delivery address likho.", false);
+
+    const qty = $("qty").value;
+    const total = priceOf(meal) * qty;
+    show("✅ <b>Order confirmed (demo)!</b><br>" + name + ", tuhada order: " +
+         qty + " × " + meal + "<br>Total: <b>₹" + total + "</b><br>Area: " + area, true);
+  });
+
+  update();
 </script>
 </body>
 </html>
