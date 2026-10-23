@@ -497,44 +497,7 @@ body {
   </div>
 </section>
 
-<script>
-(function () {
-  var steps = document.querySelectorAll('.st-step');
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    steps.forEach(function (step) { obs.observe(step); });
-  } else {
-    steps.forEach(function (step) { step.classList.add('show'); });
-  }
 
-  document.getElementById('st-order').addEventListener('click', function () {
-    var name = document.getElementById('st-name').value.trim();
-    var meals = [];
-    document.querySelectorAll('.st-meals input:checked').forEach(function (checkbox) {
-      meals.push(checkbox.value);
-    });
-    var message = document.getElementById('st-msg');
-
-    if (!name || meals.length === 0) {
-      message.textContent = 'Please enter your name and select at least one meal.';
-      return;
-    }
-
-    // Replace this demo number with your real WhatsApp number.
-    var phone = '919876543210';
-    var text = 'Hi Smart Tiffin, my name is ' + name + '. I would like: ' + meals.join(', ') + '.';
-    window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-    message.textContent = 'Opening WhatsApp...';
-  });
-})();
-</script>
 
 <script src="js/script.js"></script>
 </body>
