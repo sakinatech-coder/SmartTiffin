@@ -177,6 +177,157 @@
     .about-text h2 { font-size: 1.8rem; }
     .about-img::before { left: -10px; top: 10px; }
   }
+
+  /* ========== How It Works + Tagline + Contact (new) ========== */
+  :root {
+    --st-green: #0f5a47;
+    --st-dark: #0a3d31;
+    --st-saffron: #f4a21d;
+    --st-ink: #1d2a26;
+  }
+
+  /* How it works */
+  .st-how {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+    color: var(--st-ink);
+  }
+  .st-how h2, .st-contact h2 {
+    font-size: 2rem;
+    margin: 0 0 8px;
+  }
+  .st-how .st-sub, .st-contact .st-sub {
+    opacity: .75;
+    margin: 0 0 32px;
+    line-height: 1.6;
+  }
+  .st-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .st-step {
+    background: #fff;
+    border-radius: 24px;
+    padding: 28px 22px;
+    box-shadow: 0 10px 30px rgba(15,90,71,.10);
+  }
+  .st-num {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: var(--st-saffron);
+    color: #2a1a00;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+  }
+  .st-step h3, .st-card h3 { color: var(--st-green); margin: 0 0 10px; }
+  .st-step p, .st-card p { line-height: 1.6; opacity: .85; margin: 0; }
+
+  /* Tagline */
+  .st-tagline {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 56px 24px;
+    text-align: center;
+    border-radius: 32px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--st-green), var(--st-dark));
+  }
+  .st-tagline::before, .st-tagline::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(244,162,29,.18);
+    pointer-events: none;
+  }
+  .st-tagline::before { width: 220px; height: 220px; top: -80px; left: -60px; }
+  .st-tagline::after  { width: 160px; height: 160px; bottom: -60px; right: -40px; }
+  .st-tagline h2 {
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    position: relative;
+    line-height: 1.35;
+    margin: 0;
+  }
+  .st-tagline h2 span { color: var(--st-saffron); }
+  .st-tagline p { margin: 12px 0 0; opacity: .9; position: relative; line-height: 1.6; }
+  .st-tagline .st-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 32px;
+    border-radius: 999px;
+    background: var(--st-saffron);
+    color: #2a1a00;
+    font-weight: 700;
+    text-decoration: none;
+    position: relative;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .st-tagline .st-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.25);
+  }
+
+  /* Contact */
+  .st-contact { max-width: 1000px; margin: 60px auto; padding: 0 20px; color: var(--st-ink); }
+  .st-contact h2, .st-contact > .st-sub { text-align: center; }
+  .st-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .st-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(15,90,71,.10);
+    min-width: 0;
+  }
+  .st-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .st-item:last-of-type { border-bottom: none; }
+  .st-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: grid; place-items: center; background: #e6f2ee;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .st-item small { display: block; opacity: .6; margin-bottom: 4px; }
+  .st-item a { color: var(--st-green); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+  .st-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .st-actions a {
+    flex: 1; text-align: center; padding: 13px; border-radius: 12px;
+    color: #fff; font-weight: 600; text-decoration: none; min-width: 120px;
+    transition: transform .2s;
+  }
+  .st-actions a:hover { transform: translateY(-2px); }
+  .st-call { background: var(--st-green); }
+  .st-wa { background: #25d366; }
+
+  /* Meal order buttons (no JavaScript needed) */
+  .st-meals { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0 0; }
+  .st-meals a {
+    display: inline-block; padding: 10px 20px; border-radius: 999px;
+    background: #fff4dc; border: 1.5px solid var(--st-saffron);
+    color: var(--st-ink); font-weight: 600; text-decoration: none;
+    transition: background .2s, transform .2s;
+  }
+  .st-meals a:hover { background: var(--st-saffron); transform: translateY(-2px); }
+
+  @media (max-width: 700px) {
+    .st-steps, .st-grid { grid-template-columns: 1fr; }
+    .st-card { padding: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .st-actions a, .st-tagline .st-btn, .st-meals a { transition: none; }
+  }
 </style>
 
 <!-- About Section -->
@@ -247,190 +398,8 @@
       <a href="customer/special-thali.html">View</a>
     </div>
 
-content="width=device-width, initial-scale=1.0">
-<title>SmartTiffin - How It Works and Contact</title>
-<style>
-:root {
-  --st-green: #0f5a47;
-  --st-dark: #0a3d31;
-  --st-saffron: #f4a21d;
-  --st-ink: #1d2a26;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  padding: 20px;
-  background: #f8f5ee;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--st-ink);
-}
-.st-how {
-  max-width: 1000px;
-  margin: 40px auto 60px;
-  padding: 0 20px;
-  text-align: center;
-}
-.st-how h2, .st-contact h2 {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-.st-how .st-sub, .st-contact .st-sub {
-  opacity: .75;
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-.st-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.st-step {
-  background: #fff;
-  border-radius: 24px;
-  padding: 28px 22px;
-  box-shadow: 0 10px 30px rgba(15,90,71,.10);
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.st-step.show { opacity: 1; transform: none; }
-.st-step:nth-child(2) { transition-delay: .15s; }
-.st-step:nth-child(3) { transition-delay: .3s; }
-.st-num {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
-  background: var(--st-saffron);
-  color: #2a1a00;
-  font-weight: 800;
-  display: grid;
-  place-items: center;
-  font-size: 1.2rem;
-}
-.st-step h3, .st-card h3 { color: var(--st-green); margin: 0 0 10px; }
-.st-step p, .st-card p { line-height: 1.6; opacity: .85; }
-
-.st-tagline {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 56px 24px;
-  text-align: center;
-  border-radius: 32px;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--st-green), var(--st-dark));
-}
-.st-tagline::before, .st-tagline::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(244,162,29,.18);
-  pointer-events: none;
-}
-.st-tagline::before {
-  width: 220px; height: 220px; top: -80px; left: -60px;
-}
-.st-tagline::after {
-  width: 160px; height: 160px; bottom: -60px; right: -40px;
-}
-.st-tagline h2 {
-  font-size: clamp(1.6rem, 5vw, 2.6rem);
-  position: relative;
-  line-height: 1.35;
-}
-.st-tagline h2 span { color: var(--st-saffron); }
-.st-tagline p { margin-top: 12px; opacity: .9; position: relative; line-height: 1.6; }
-.st-tagline .st-btn {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 14px 32px;
-  border-radius: 999px;
-  background: var(--st-saffron);
-  color: #2a1a00;
-  font-weight: 700;
-  text-decoration: none;
-  position: relative;
-  transition: transform .2s, box-shadow .2s;
-}
-.st-tagline .st-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,.25);
-}
-
-.st-contact { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-.st-contact h2, .st-contact > .st-sub { text-align: center; }
-.st-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.st-card {
-  background: #fff;
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 10px 30px rgba(15,90,71,.10);
-  min-width: 0;
-}
-.st-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid #eee;
-}
-.st-item:last-of-type { border-bottom: none; }
-.st-icon {
-  width: 48px; height: 48px; border-radius: 14px;
-  display: grid; place-items: center; background: #e6f2ee;
-  font-size: 1.4rem; flex-shrink: 0;
-}
-.st-item small { display: block; opacity: .6; margin-bottom: 4px; }
-.st-item a { color: var(--st-green); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
-.st-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-.st-actions a {
-  flex: 1; text-align: center; padding: 13px; border-radius: 12px;
-  color: #fff; font-weight: 600; text-decoration: none; min-width: 120px;
-  transition: transform .2s;
-}
-.st-actions a:hover { transform: translateY(-2px); }
-.st-call { background: var(--st-green); }
-.st-wa { background: #25d366; }
-
-.st-meals { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
-.st-meals label { cursor: pointer; }
-.st-meals input { position: absolute; opacity: 0; }
-.st-meals span {
-  display: inline-block; padding: 8px 18px; border-radius: 999px;
-  background: #fff4dc; border: 1.5px solid var(--st-saffron);
-  font-weight: 600; transition: background .2s;
-}
-.st-meals input:checked + span { background: var(--st-saffron); color: #2a1a00; }
-.st-meals input:focus-visible + span { outline: 3px solid var(--st-green); }
-.st-card input[type="text"] {
-  width: 100%; padding: 13px 14px; margin-bottom: 14px;
-  border: 1.5px solid #dcdcdc; border-radius: 12px; font: inherit;
-}
-.st-card input[type="text"]:focus {
-  outline: none; border-color: var(--st-green);
-  box-shadow: 0 0 0 4px rgba(15,90,71,.12);
-}
-.st-order-btn {
-  width: 100%; padding: 14px; border: none; border-radius: 12px;
-  cursor: pointer; background: var(--st-green); color: #fff;
-  font-size: 1rem; font-weight: 700;
-}
-.st-order-btn:hover { background: var(--st-dark); }
-#st-msg { margin-top: 10px; font-weight: 600; text-align: center; color: #c0392b; }
-@media (max-width: 700px) {
-  .st-steps, .st-grid { grid-template-columns: 1fr; }
-  body { padding: 10px; }
-  .st-card { padding: 22px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .st-step { opacity: 1; transform: none; transition: none; }
-  .st-actions a, .st-tagline .st-btn { transition: none; }
-}
-</style>
-</head>
-<body>
+  </div>
+</section>
 
 <!-- HOW IT WORKS -->
 <section class="st-how" id="how-it-works">
@@ -445,7 +414,7 @@ body {
     <div class="st-step">
       <div class="st-num">2</div>
       <h3>Place Your Order</h3>
-      <p>Call us, message us on WhatsApp, or fill out the quick order form below.</p>
+      <p>Call us or message us on WhatsApp with the meal you want.</p>
     </div>
     <div class="st-step">
       <div class="st-num">3</div>
@@ -455,10 +424,10 @@ body {
   </div>
 </section>
 
-<!-- TAGLINE: Original Punjabi/Hinglish tagline kept as requested -->
+<!-- TAGLINE -->
 <section class="st-tagline">
-  <h2>🍱 Ghar ka khaana, <span>sehat ka khazaana!</span> 💪</h2>
-  <p>Ghar warga taza khaana, tuhade darwaze tak</p>
+  <h2>🍱 Ghar ka khaana 😋, <span>sehat ka khazaana!</span> 💪</h2>
+  <p>Ghar 🏠 warga taza khaana, tuhade darwaze tak</p>
   <a class="st-btn" href="#contact">Order Your Tiffin</a>
 </section>
 
@@ -467,6 +436,7 @@ body {
   <h2>Contact Us</h2>
   <p class="st-sub">To place an order or ask a question, call us or contact us on WhatsApp.</p>
   <div class="st-grid">
+
     <div class="st-card">
       <div class="st-item">
         <div class="st-icon">📍</div>
@@ -484,20 +454,16 @@ body {
 
     <div class="st-card">
       <h3>Quick Order</h3>
-      <p>Select your preferred meal times, enter your name, and send your order through WhatsApp.</p>
+      <p>Tap the meal you need and your WhatsApp message opens, ready to send.</p>
       <div class="st-meals">
-        <label><input type="checkbox" value="Breakfast"><span>🌅 Breakfast</span></label>
-        <label><input type="checkbox" value="Lunch"><span>☀️ Lunch</span></label>
-        <label><input type="checkbox" value="Dinner"><span>🌙 Dinner</span></label>
+        <a href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20need%20Breakfast" target="_blank" rel="noopener noreferrer">🌅 Breakfast</a>
+        <a href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20need%20Lunch" target="_blank" rel="noopener noreferrer">☀️ Lunch</a>
+        <a href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20need%20Dinner" target="_blank" rel="noopener noreferrer">🌙 Dinner</a>
       </div>
-      <input type="text" id="st-name" placeholder="Enter your name" autocomplete="name">
-      <button type="button" class="st-order-btn" id="st-order">Order on WhatsApp</button>
-      <div id="st-msg" role="status" aria-live="polite"></div>
     </div>
+
   </div>
 </section>
-
-
 
 <script src="js/script.js"></script>
 </body>
