@@ -5,7 +5,7 @@ Smart Tiffin is a homemade food ordering website.
 ## Pages
 - Home (index.html)
 - Login
-- Register
+- contact 
 - Menu
 - Customer
 - Admin
@@ -14,6 +14,6 @@ Smart Tiffin is a homemade food ordering website.
 - HTML
 - CSS
 - JavaScript
-- SQL
+
 
 Made by Sakina
