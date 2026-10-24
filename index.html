@@ -400,6 +400,7 @@
 
   </div>
 </section>
+  
 <style>
 /* ========== Breakfast & Snacks ========== */
 .st-bf {
@@ -734,31 +735,420 @@
       <div class="st-bf-img" style="background-image:url('ADD-IMAGE-namkeen.jpg')">
         🥜<span class="st-bf-tag">Snacks</span>
       </div>
-      <div class="st-bf-body">
-        <h3>Namkeen / Mathri</h3>
-        <p>Crunchy namkeen, mathri and bhujia for any time.</p>
-        <div class="st-bf-row">
-          <span class="st-bf-price">₹30</span>
-          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Namkeen" target="_blank" rel="noopener noreferrer">Order</a>
-        </div>
-      </div>
     </div>
+</section>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    <div class="st-bf-card">
-      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-cake.jpg')">
-        🍰<span class="st-bf-tag">Snacks</span>
-      </div>
-      <div class="st-bf-body">
-        <h3>Cake Slice</h3>
-        <p>A soft and delicious cake slice for sweet cravings.</p>
-        <div class="st-bf-row">
-          <span class="st-bf-price">₹35</span>
-          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Cake%20Slice" target="_blank" rel="noopener noreferrer">Order</a>
-        </div>
-      </div>
-    </div>
+html {
+  scroll-behavior: smooth;
+}
 
-  </div>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f8f5ee;
+  color: #1d2a26;
+}
+
+.mn {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 20px;
+}
+
+.mn h2 {
+  text-align: center;
+  color: #0f5a47;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.mn-sub {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.mn input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mn-cats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 35px;
+}
+
+.mn-cats label {
+  cursor: pointer;
+  background: white;
+  border: 3px solid transparent;
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 8px 22px #0f5a4715;
+  transition: .25s;
+}
+
+.mn-cats label:hover {
+  transform: translateY(-4px);
+}
+
+.mn-cat-img {
+  height: 115px;
+  display: grid;
+  place-items: center;
+  font-size: 45px;
+  background: #fff4dc;
+  background-size: cover;
+  background-position: center;
+}
+
+.mn-cats strong {
+  display: block;
+  color: #0f5a47;
+  padding: 12px 5px 4px;
+  font-size: 17px;
+}
+
+.mn-cats small {
+  display: block;
+  color: #777;
+  padding: 0 5px 14px;
+}
+
+#mn-breakfast:checked ~ .mn-cats label[for="mn-breakfast"],
+#mn-healthy:checked ~ .mn-cats label[for="mn-healthy"],
+#mn-drinks:checked ~ .mn-cats label[for="mn-drinks"],
+#mn-snacks:checked ~ .mn-cats label[for="mn-snacks"] {
+  border-color: #f4a21d;
+  box-shadow: 0 10px 25px #f4a21d35;
+}
+
+.mn-panel {
+  display: none;
+}
+
+#mn-breakfast:checked ~ .mn-panels #mn-p-breakfast,
+#mn-healthy:checked ~ .mn-panels #mn-p-healthy,
+#mn-drinks:checked ~ .mn-panels #mn-p-drinks,
+#mn-snacks:checked ~ .mn-panels #mn-p-snacks {
+  display: block;
+}
+
+.mn-title {
+  text-align: center;
+  color: #0f5a47;
+  font-size: 25px;
+  margin: 20px 0;
+}
+
+.mn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.mn-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px #0f5a4712;
+  display: flex;
+  flex-direction: column;
+  transition: .25s;
+}
+
+.mn-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px #0f5a4725;
+}
+
+.mn-img {
+  height: 155px;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  background-color: #fff4dc;
+  background-size: cover;
+  background-position: center;
+}
+
+.mn-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mn-body h3 {
+  color: #0f5a47;
+  font-size: 17px;
+  margin: 0 0 8px;
+}
+
+.mn-body p {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 15px;
+  flex: 1;
+}
+
+.mn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mn-price {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.mn-order {
+  display: inline-block;
+  background: #25c76a;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  transition: .2s;
+}
+
+.mn-order:hover {
+  background: #0f5a47;
+  transform: scale(1.04);
+}
+
+@media (max-width: 700px) {
+  .mn-cats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .mn-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .mn-img {
+    height: 120px;
+    font-size: 38px;
+  }
+
+  .mn-body {
+    padding: 12px;
+  }
+
+  .mn-body h3 {
+    font-size: 14px;
+  }
+
+  .mn-body p {
+    font-size: 12px;
+  }
+
+  .mn-row {
+    flex-wrap: wrap;
+  }
+
+  .mn-order {
+    padding: 9px 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .mn {
+    padding: 10px;
+  }
+
+  .mn-grid {
+    gap: 9px;
+  }
+
+  .mn-order {
+    padding: 8px;
+  }
+}
+</style>
+
+<section class="mn" id="menu">
+
+<h2>🍱 Our Menu</h2>
+<p class="mn-sub">Fresh Food · Made With Love · Delivered To Your Door</p>
+
+<input type="radio" name="mn" id="mn-breakfast" checked>
+<input type="radio" name="mn" id="mn-healthy">
+<input type="radio" name="mn" id="mn-drinks">
+<input type="radio" name="mn" id="mn-snacks">
+
+<div class="mn-cats">
+
+<label for="mn-breakfast">
+<div class="mn-cat-img" style="background-image:url('ADD-IMAGE-cat-breakfast.jpg')">🍳</div>
+<strong>Breakfast</strong>
+<small>8 items · View Meals</small>
+</label>
+
+<label for="mn-healthy">
+<div class="mn-cat-img" style="background-image:url('ADD-IMAGE-cat-healthy.jpg')">🥗</div>
+<strong>Healthy Food</strong>
+<small>8 items · View Meals</small>
+</label>
+
+<label for="mn-drinks">
+<div class="mn-cat-img" style="background-image:url('ADD-IMAGE-cat-drinks.jpg')">🥤</div>
+<strong>Drinks</strong>
+<small>8 items · View Drinks</small>
+</label>
+
+<label for="mn-snacks">
+<div class="mn-cat-img" style="background-image:url('ADD-IMAGE-cat-snacks.jpg')">🍟</div>
+<strong>Snacks</strong>
+<small>8 items · View Snacks</small>
+</label>
+
+</div>
+
+<div class="mn-panels">
+
+<!-- BREAKFAST -->
+
+<div class="mn-panel" id="mn-p-breakfast">
+<h3 class="mn-title">🌅 Breakfast</h3>
+<div class="mn-grid">
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-poha.jpg')">🍛</div>
+<div class="mn-body"><h3>Poha</h3><p>Light and tasty poha with peanuts and lemon.</p><div class="mn-row"><span class="mn-price">₹40</span><a class="mn-order" href="Order.html?meal=Poha&price=40">Order Now</a></div></div>
+</div>
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-upma.jpg')">🥣</div>
+<div class="mn-body"><h3>Veg Upma</h3><p>Soft semolina cooked with fresh vegetables.</p><div class="mn-row"><span class="mn-price">₹40</span><a class="mn-order" href="Order.html?meal=Veg%20Upma&price=40">Order Now</a></div></div>
+</div>
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-idli.jpg')">🍚</div>
+<div class="mn-body"><h3>Idli Sambar</h3><p>Soft idli served with hot sambar and chutney.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Idli%20Sambar&price=50">Order Now</a></div></div>
+</div>
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-dosa.jpg')">🥞</div>
+<div class="mn-body"><h3>Masala Dosa</h3><p>Crispy dosa with spiced potato filling.</p><div class="mn-row"><span class="mn-price">₹70</span><a class="mn-order" href="Order.html?meal=Masala%20Dosa&price=70">Order Now</a></div></div>
+</div>
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-chilla.jpg')">🥞</div>
+<div class="mn-body"><h3>Moong Dal Chilla</h3><p>Protein-rich savoury lentil pancakes.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Moong%20Dal%20Chilla&price=50">Order Now</a></div></div>
+</div>
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-bread-butter.jpg')">🍞</div>
+<div class="mn-body"><h3>Bread Butter Toast</h3><p>Crispy toast served with butter and jam.</p><div class="mn-row"><span class="mn-price">₹30</span><a class="mn-order" href="Order.html?meal=Bread%20Butter%20Toast&price=30">Order Now</a></div></div>
+</div>
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-sandwich.jpg')">🥪</div>
+<div class="mn-body"><h3>Veg Sandwich</h3><p>Grilled sandwich with fresh vegetables.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Veg%20Sandwich&price=50">Order Now</a></div></div>
+</div>
+
+<div class="mn-card">
+<div class="mn-img" style="background-image:url('ADD-IMAGE-cornflakes.jpg')">🥣</div>
+<div class="mn-body"><h3>Cornflakes with Milk</h3><p>Crunchy cornflakes served with milk.</p><div class="mn-row"><span class="mn-price">₹45</span><a class="mn-order" href="Order.html?meal=Cornflakes%20with%20Milk&price=45">Order Now</a></div></div>
+</div>
+
+</div>
+</div>
+
+<!-- HEALTHY FOOD -->
+
+<div class="mn-panel" id="mn-p-healthy">
+<h3 class="mn-title">🥗 Healthy Food</h3>
+<div class="mn-grid">
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-oats.jpg')">🥛</div><div class="mn-body"><h3>Oats Bowl</h3><p>Warm oats with milk and banana.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Oats%20Bowl&price=50">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-daliya.jpg')">🍲</div><div class="mn-body"><h3>Vegetable Daliya</h3><p>Healthy broken wheat cooked with vegetables.</p><div class="mn-row"><span class="mn-price">₹45</span><a class="mn-order" href="Order.html?meal=Vegetable%20Daliya&price=45">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-fruit-salad.jpg')">🥗</div><div class="mn-body"><h3>Fresh Fruit Bowl</h3><p>A fresh bowl of seasonal fruits.</p><div class="mn-row"><span class="mn-price">₹60</span><a class="mn-order" href="Order.html?meal=Fresh%20Fruit%20Bowl&price=60">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-sprouts.jpg')">🌱</div><div class="mn-body"><h3>Sprouts Salad</h3><p>Fresh sprouts with tomato and lemon.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Sprouts%20Salad&price=50">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-yogurt.jpg')">🍓</div><div class="mn-body"><h3>Fruit and Curd Bowl</h3><p>Fresh curd topped with chopped fruits.</p><div class="mn-row"><span class="mn-price">₹65</span><a class="mn-order" href="Order.html?meal=Fruit%20and%20Curd%20Bowl&price=65">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-veg-salad.jpg')">🥒</div><div class="mn-body"><h3>Garden Veg Salad</h3><p>Cucumber, carrot, tomato and beetroot.</p><div class="mn-row"><span class="mn-price">₹40</span><a class="mn-order" href="Order.html?meal=Garden%20Veg%20Salad&price=40">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-brown-bread.jpg')">🥪</div><div class="mn-body"><h3>Brown Bread Sandwich</h3><p>Whole wheat bread with fresh vegetables.</p><div class="mn-row"><span class="mn-price">₹55</span><a class="mn-order" href="Order.html?meal=Brown%20Bread%20Sandwich&price=55">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-dry-fruits.jpg')">🌰</div><div class="mn-body"><h3>Dry Fruits Cup</h3><p>Almonds, walnuts, raisins and dates.</p><div class="mn-row"><span class="mn-price">₹80</span><a class="mn-order" href="Order.html?meal=Dry%20Fruits%20Cup&price=80">Order Now</a></div></div></div>
+
+</div>
+</div>
+
+<!-- DRINKS -->
+
+<div class="mn-panel" id="mn-p-drinks">
+<h3 class="mn-title">🥤 Drinks</h3>
+<div class="mn-grid">
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-orange-juice.jpg')">🍊</div><div class="mn-body"><h3>Fresh Orange Juice</h3><p>Freshly prepared orange juice.</p><div class="mn-row"><span class="mn-price">₹40</span><a class="mn-order" href="Order.html?meal=Fresh%20Orange%20Juice&price=40">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-mixed-juice.jpg')">🧃</div><div class="mn-body"><h3>Mixed Fruit Juice</h3><p>A refreshing mix of seasonal fruits.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Mixed%20Fruit%20Juice&price=50">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-lassi.jpg')">🥛</div><div class="mn-body"><h3>Sweet Lassi</h3><p>Traditional Punjabi sweet lassi.</p><div class="mn-row"><span class="mn-price">₹40</span><a class="mn-order" href="Order.html?meal=Sweet%20Lassi&price=40">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-banana-shake.jpg')">🍌</div><div class="mn-body"><h3>Banana Shake</h3><p>Creamy banana shake with fresh milk.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Banana%20Shake&price=50">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-cold-coffee.jpg')">🥤</div><div class="mn-body"><h3>Cold Coffee</h3><p>Chilled coffee blended with milk.</p><div class="mn-row"><span class="mn-price">₹60</span><a class="mn-order" href="Order.html?meal=Cold%20Coffee&price=60">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-masala-chai.jpg')">☕</div><div class="mn-body"><h3>Masala Chai</h3><p>Hot tea with ginger and cardamom.</p><div class="mn-row"><span class="mn-price">₹15</span><a class="mn-order" href="Order.html?meal=Masala%20Chai&price=15">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-hot-coffee.jpg')">☕</div><div class="mn-body"><h3>Hot Coffee</h3><p>Freshly prepared hot coffee.</p><div class="mn-row"><span class="mn-price">₹20</span><a class="mn-order" href="Order.html?meal=Hot%20Coffee&price=20">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-lemon-soda.jpg')">🍋</div><div class="mn-body"><h3>Lemon Soda</h3><p>Refreshing lemon soda, sweet or salty.</p><div class="mn-row"><span class="mn-price">₹30</span><a class="mn-order" href="Order.html?meal=Lemon%20Soda&price=30">Order Now</a></div></div></div>
+
+</div>
+</div>
+
+<!-- SNACKS -->
+
+<div class="mn-panel" id="mn-p-snacks">
+<h3 class="mn-title">🍟 Snacks</h3>
+<div class="mn-grid">
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-samosa.jpg')">🥟</div><div class="mn-body"><h3>Samosa (2 pcs)</h3><p>Crispy potato samosas served with chutney.</p><div class="mn-row"><span class="mn-price">₹25</span><a class="mn-order" href="Order.html?meal=Samosa&price=25">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-bread-pakora.jpg')">🍘</div><div class="mn-body"><h3>Bread Pakora</h3><p>Crispy bread pakora made with gram flour.</p><div class="mn-row"><span class="mn-price">₹20</span><a class="mn-order" href="Order.html?meal=Bread%20Pakora&price=20">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-paneer-pakora.jpg')">🧀</div><div class="mn-body"><h3>Paneer Pakora</h3><p>Golden fried paneer with a crispy coating.</p><div class="mn-row"><span class="mn-price">₹60</span><a class="mn-order" href="Order.html?meal=Paneer%20Pakora&price=60">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-fries.jpg')">🍟</div><div class="mn-body"><h3>French Fries</h3><p>Golden and crispy potato fries.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=French%20Fries&price=50">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-sandwich.jpg')">🥪</div><div class="mn-body"><h3>Grilled Sandwich</h3><p>Grilled sandwich with fresh vegetables.</p><div class="mn-row"><span class="mn-price">₹50</span><a class="mn-order" href="Order.html?meal=Grilled%20Sandwich&price=50">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-biscuits.jpg')">🍪</div><div class="mn-body"><h3>Biscuits & Cookies</h3><p>Biscuits and cookies to enjoy with tea.</p><div class="mn-row"><span class="mn-price">₹20</span><a class="mn-order" href="Order.html?meal=Biscuits%20and%20Cookies&price=20">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-namkeen.jpg')">🥜</div><div class="mn-body"><h3>Namkeen / Mathri</h3><p>Crunchy namkeen, mathri and bhujia.</p><div class="mn-row"><span class="mn-price">₹30</span><a class="mn-order" href="Order.html?meal=Namkeen%20Mathri&price=30">Order Now</a></div></div></div>
+
+<div class="mn-card"><div class="mn-img" style="background-image:url('ADD-IMAGE-cake.jpg')">🍰</div><div class="mn-body"><h3>Cake Slice</h3><p>A soft and delicious slice of cake.</p><div class="mn-row"><span class="mn-price">₹35</span><a class="mn-order" href="Order.html?meal=Cake%20Slice&price=35">Order Now</a></div></div></div>
+
+</div>
+</div>
+
+</div>
 </section>
   
 <!-- HOW IT WORKS -->
