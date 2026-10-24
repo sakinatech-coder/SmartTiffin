@@ -400,7 +400,367 @@
 
   </div>
 </section>
+<style>
+/* ========== Breakfast & Snacks ========== */
+.st-bf {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+  color: #1d2a26;
+}
 
+.st-bf h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 8px;
+}
+
+.st-bf .st-bf-sub {
+  text-align: center;
+  opacity: .75;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+.st-bf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.st-bf-card {
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(15,90,71,.10);
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.st-bf-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(15,90,71,.18);
+}
+
+.st-bf-img {
+  height: 160px;
+  display: grid;
+  place-items: center;
+  font-size: 3.4rem;
+  background-color: #fff4dc;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.st-bf-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #0f5a47;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.st-bf-body {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.st-bf-body h3 {
+  margin: 0 0 6px;
+  color: #0f5a47;
+  font-size: 1.1rem;
+}
+
+.st-bf-body p {
+  margin: 0 0 14px;
+  font-size: .92rem;
+  line-height: 1.5;
+  opacity: .8;
+  flex: 1;
+}
+
+.st-bf-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.st-bf-price {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #1d2a26;
+}
+
+.st-bf-btn {
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: .9rem;
+  padding: 9px 18px;
+  border-radius: 999px;
+  transition: transform .2s;
+}
+
+.st-bf-btn:hover {
+  transform: scale(1.06);
+}
+
+@media (max-width: 500px) {
+  .st-bf-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .st-bf-img {
+    height: 120px;
+    font-size: 2.6rem;
+  }
+
+  .st-bf-body {
+    padding: 12px;
+  }
+
+  .st-bf-row {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}
+</style>
+
+<!-- BREAKFAST & SNACKS -->
+<section class="st-bf" id="breakfast">
+
+  <h2>🌅 Breakfast &amp; Snacks</h2>
+  <p class="st-bf-sub">
+    Fresh breakfast and snacks with homemade taste.
+  </p>
+
+  <div class="st-bf-grid">
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-poha.jpg')">
+        🍛<span class="st-bf-tag">Breakfast</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Poha</h3>
+        <p>Light and hot poha with peanuts and lemon.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹40</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Poha" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-upma.jpg')">
+        🥣<span class="st-bf-tag">Breakfast</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Upma</h3>
+        <p>Healthy sooji upma prepared with vegetables.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹40</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Upma" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-idli.jpg')">
+        🍚<span class="st-bf-tag">Breakfast</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Idli Sambar</h3>
+        <p>Soft idli served with hot sambar and chutney.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹50</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Idli%20Sambar" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-bread-butter.jpg')">
+        🍞<span class="st-bf-tag">Breakfast</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Bread Butter Toast</h3>
+        <p>Crispy toast served with butter and jam.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹30</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Bread%20Butter%20Toast" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-sandwich.jpg')">
+        🥪<span class="st-bf-tag">Breakfast</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Veg Sandwich</h3>
+        <p>Grilled sandwich with fresh vegetables and chutney.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹50</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Veg%20Sandwich" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-oats.jpg')">
+        🥛<span class="st-bf-tag">Healthy</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Oats / Dalia</h3>
+        <p>Nutritious oats or dalia for a healthy breakfast.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹45</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Oats%20or%20Dalia" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-fruit-salad.jpg')">
+        🥗<span class="st-bf-tag">Healthy</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Fruit Salad</h3>
+        <p>A fresh bowl of seasonal fruits.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹60</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Fruit%20Salad" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-juice.jpg')">
+        🧃<span class="st-bf-tag">Drinks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Fresh Juice</h3>
+        <p>Fresh orange, sweet lime or mixed fruit juice.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹40</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Fresh%20Juice" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-lassi.jpg')">
+        🥤<span class="st-bf-tag">Drinks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Lassi / Banana Shake</h3>
+        <p>Refreshing sweet lassi or banana shake.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹40</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Lassi%20or%20Banana%20Shake" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-tea-coffee.jpg')">
+        ☕<span class="st-bf-tag">Drinks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Masala Chai / Coffee</h3>
+        <p>Hot tea or coffee to start your day.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹15</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Chai%20or%20Coffee" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-samosa.jpg')">
+        🥟<span class="st-bf-tag">Snacks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Samosa (2 pcs)</h3>
+        <p>Crispy hot samosas served with chutney.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹25</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Samosa" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-bread-pakora.jpg')">
+        🍘<span class="st-bf-tag">Snacks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Bread Pakora</h3>
+        <p>Hot and crispy bread pakora made with gram flour.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹20</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Bread%20Pakora" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-biscuits.jpg')">
+        🍪<span class="st-bf-tag">Snacks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Biscuits &amp; Cookies</h3>
+        <p>Biscuits, cookies and rusk to enjoy with tea.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹20</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Biscuits" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-namkeen.jpg')">
+        🥜<span class="st-bf-tag">Snacks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Namkeen / Mathri</h3>
+        <p>Crunchy namkeen, mathri and bhujia for any time.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹30</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Namkeen" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-bf-card">
+      <div class="st-bf-img" style="background-image:url('ADD-IMAGE-cake.jpg')">
+        🍰<span class="st-bf-tag">Snacks</span>
+      </div>
+      <div class="st-bf-body">
+        <h3>Cake Slice</h3>
+        <p>A soft and delicious cake slice for sweet cravings.</p>
+        <div class="st-bf-row">
+          <span class="st-bf-price">₹35</span>
+          <a class="st-bf-btn" href="https://wa.me/919876543210?text=Hi%20Smart%20Tiffin%2C%20I%20want%20Cake%20Slice" target="_blank" rel="noopener noreferrer">Order</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
 <!-- HOW IT WORKS -->
 <section class="st-how" id="how-it-works">
   <h2>How It Works</h2>
