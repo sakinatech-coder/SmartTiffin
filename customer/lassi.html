@@ -62,7 +62,6 @@
     card.innerHTML = `
       <div class="pic"><img src="../${item.img}" alt="${item.name}" onerror="this.style.display='none'; this.parentNode.textContent='${item.icon || "🥛"}'"></div>
       <h3>${item.name}</h3>
-      <p class="desc">${item.desc}</p>
       ${sizeHtml}
       <div class="price"></div>
       <a class="order" href="#">Order Now</a>
