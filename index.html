@@ -167,7 +167,54 @@ body{margin:0;background:#f8f7ef;color:#1d2a26;font-family:Arial,sans-serif}
     <a href="#breakfast" class="btn">Explore Menu</a>
   </div>
 </section>
+<style>
+.hungry-section {
+    text-align: center;
+    padding: 35px 10px;
+    margin: 15px auto;
+}
 
+.hungry-section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #0f5a47;
+    margin: 10px 0;
+    animation: hungryGlow 1.5s ease-in-out infinite alternate;
+}
+
+.hungry-section h2 span {
+    color: #f4a21d;
+    font-style: italic;
+}
+
+.hungry-section h3 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #e76b35;
+    margin-top: 12px;
+}
+
+@keyframes hungryGlow {
+    from { transform: scale(1); }
+    to { transform: scale(1.04); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .hungry-section h2 {
+        font-size: 27px;
+    }
+
+    .hungry-section h3 {
+        font-size: 20px;
+    }
+}
+</style>
+
+<section class="hungry-section">
+    <h2>Hungry? <span>Don't Worry!</span></h2>
+    <h3>We're Here For You ❤️</h3>
+</section>
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="about-container">
