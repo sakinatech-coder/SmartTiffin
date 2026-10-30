@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lassi & Water - Smart Tiffin</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Roboto,Arial,sans-serif;background:#f8f5ee;color:#1f2937}
+    .topbar{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:14px 5%;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .topbar h2{font-size:20px}
+    .topbar a{color:#1f2937;text-decoration:none;font-size:14px}
+    h1{text-align:center;font-size:22px;margin:26px 0 20px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:1100px;margin:0 auto;padding:0 5% 50px}
+    .card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.1);text-align:center}
+    .pic{height:170px;display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#fff8e1,#e8f5e9)}
+    .pic img{width:100%;height:100%;object-fit:cover;display:block}
+    .card h3{font-size:17px;margin:12px 0 4px}
+    .desc{font-size:12px;color:#6b7280;margin-bottom:8px;padding:0 8px}
+    .size{display:flex;gap:8px;justify-content:center;margin:8px 0}
+    .size button{padding:6px 12px;border:1px solid #16a34a;background:#fff;color:#16a34a;border-radius:20px;font-size:13px;cursor:pointer}
+    .size button.active{background:#16a34a;color:#fff}
+    .price{font-size:20px;font-weight:700;color:#166534;margin-bottom:10px}
+    .order{display:block;background:#16a34a;color:#fff;padding:12px;text-decoration:none;font-weight:600}
+    .order:hover{background:#166534}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <h2>🥛 Lassi & Water</h2>
+  <a href="menu.html">← Back</a>
+</div>
+
+<h1>Choose Your Drink</h1>
+<div class="grid" id="lassiGrid"></div>
+
+<script>
+  // name, image (root folder ch), full glass price, half glass price
+  const LASSI = [
+    { name:"Sweet Lassi",    img:"sweet_lassi.jpg",   full:30, half:20, desc:"Mithi, thandi te gaadhi dahi di lassi" },
+    { name:"Salted Lassi",   img:"salted_lassi.jpg",  full:30, half:20, desc:"Namkeen lassi bhune jeere naal" },
+    { name:"Masala Lassi",   img:"masala_lassi.jpg",  full:35, half:25, desc:"Jeera, kala namak te pudina naal" },
+    { name:"Rose Lassi",     img:"rose_lassi.jpg",    full:40, half:30, desc:"Rose syrup wali khushboodar lassi" },
+    { name:"Mango Lassi",    img:"mango_lassi.jpg",   full:50, half:35, desc:"Pakke aam te dahi naal" },
+    { name:"Makhan Lassi",   img:"makhan_lassi.jpg",  full:45, half:30, desc:"Upar ton ghar da makhan paaya" },
+    { name:"Dry Fruit Lassi",img:"dryfruit_lassi.jpg",full:70, half:50, desc:"Badam, kaju te pista naal" },
+    // single = ik hi price (size select nahi hunda)
+    { name:"Water Bottle (1 Litre)", img:"water_bottle.jpg", single:20, icon:"💧", desc:"Saaf te thanda peen wala paani" }
+  ];
+
+  const grid = document.getElementById("lassiGrid");
+
+  LASSI.forEach((item) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const sizeHtml = item.single ? "" : `
+      <div class="size">
+        <button class="active" data-size="full">Full Glass</button>
+        <button data-size="half">Half Glass</button>
+      </div>`;
+    card.innerHTML = `
+      <div class="pic"><img src="../${item.img}" alt="${item.name}" onerror="this.style.display='none'; this.parentNode.textContent='${item.icon || "🥛"}'"></div>
+      <h3>${item.name}</h3>
+      <p class="desc">${item.desc}</p>
+      ${sizeHtml}
+      <div class="price"></div>
+      <a class="order" href="#">Order Now</a>
+    `;
+    grid.appendChild(card);
+
+    const priceEl = card.querySelector(".price");
+    const orderEl = card.querySelector(".order");
+    const buttons = card.querySelectorAll(".size button");
+
+    function update(label, price){
+      priceEl.textContent = "₹" + price;
+      orderEl.href = "order.html?meal=" + encodeURIComponent(label) + "&price=" + price;
+    }
+
+    if (item.single){
+      update(item.name, item.single);
+      return;
+    }
+
+    function pick(size){
+      const price = size === "full" ? item.full : item.half;
+      const label = item.name + " (" + (size === "full" ? "Full Glass" : "Half Glass") + ")";
+      update(label, price);
+    }
+    buttons.forEach(b => b.addEventListener("click", () => {
+      buttons.forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      pick(b.dataset.size);
+    }));
+    pick("full");
+  });
+</script>
+</body>
+</html>
