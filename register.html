@@ -1,29 +1,374 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | Smart Tiffin</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register | SmartTiffin</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8f5ee;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Main Container */
+.register-container {
+    width: 100%;
+    max-width: 950px;
+    display: flex;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+}
+
+/* Left Side */
+.register-left {
+    width: 42%;
+    background: linear-gradient(145deg, #0f5a47, #073c32);
+    color: white;
+    padding: 45px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.register-left h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.register-left h1 span {
+    color: #f4a21d;
+}
+
+.register-left p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #e5eee9;
+}
+
+.food-icon {
+    font-size: 55px;
+    margin: 35px 0;
+}
+
+.tagline {
+    color: #ffc45b;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Right Side */
+.register-right {
+    width: 58%;
+    padding: 40px 50px;
+}
+
+.register-right h2 {
+    font-size: 29px;
+    color: #0f5a47;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 17px;
+}
+
+.input-group label {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    background: #fafafa;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #0f5a47;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(15,90,71,0.08);
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 65px;
+}
+
+.toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #0f5a47;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Button */
+.register-btn {
+    width: 100%;
+    padding: 15px;
+    background: #0f5a47;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: #f4a21d;
+    color: #173d32;
+    transform: translateY(-2px);
+}
+
+/* Login Link */
+.login-link {
+    text-align: center;
+    margin-top: 22px;
+    color: #666;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #0f5a47;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    color: #f4a21d;
+}
+
+.home-link {
+    text-align: center;
+    margin-top: 17px;
+}
+
+.home-link a {
+    color: #777;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Mobile Responsive */
+@media(max-width: 650px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .register-container {
+        max-width: 420px;
+        flex-direction: column;
+        border-radius: 20px;
+    }
+
+    .register-left {
+        width: 100%;
+        padding: 25px 20px;
+    }
+
+    .logo {
+        font-size: 32px;
+        margin-bottom: 7px;
+    }
+
+    .register-left h1 {
+        font-size: 25px;
+    }
+
+    .register-left p {
+        font-size: 13px;
+    }
+
+    .food-icon {
+        font-size: 35px;
+        margin: 10px 0;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    .register-right {
+        width: 100%;
+        padding: 28px 23px;
+    }
+
+    .register-right h2 {
+        font-size: 25px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<div class="login-box">
-  <h2>🍱 Smart Tiffin</h2>
-  <h3>Create Account</h3>
+<div class="register-container">
 
-  <form action="customer/dashboard.html">
-    <input type="text" placeholder="Full Name" required>
-    <input type="tel" placeholder="Mobile Number" required>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Create Password" required>
+    <!-- Welcome Section -->
+    <div class="register-left">
 
-    <button type="submit">Sign Up</button>
-  </form>
+        <div class="logo">🍱</div>
 
-  <p>Already have an account?</p>
-  <a href="login.html" class="btn">Login</a>
+        <h1>Smart<span>Tiffin</span></h1>
+
+        <p>
+            Join SmartTiffin and enjoy
+            fresh homemade meals from
+            trusted local food providers.
+        </p>
+
+        <div class="food-icon">🥗 🍛 🥘</div>
+
+        <div class="tagline">
+            Ghar ka khaana, sehat ka khazaana!
+        </div>
+
+    </div>
+
+    <!-- Registration Form -->
+    <div class="register-right">
+
+        <h2>Create Account ✨</h2>
+
+        <p class="subtitle">
+            Sign up to enjoy delicious homemade food.
+        </p>
+
+        <form action="customer/dashboard.html" method="get">
+
+            <div class="input-group">
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Enter your full name"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <label>Mobile Number</label>
+                <input
+                    type="tel"
+                    name="mobile"
+                    placeholder="Enter 10-digit mobile number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <label>Create Password</label>
+
+                <div class="password-box">
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required>
+
+                    <button
+                        type="button"
+                        class="toggle"
+                        onclick="togglePassword()">
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="register-btn">
+                Create Account →
+            </button>
+
+        </form>
+
+        <div class="login-link">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+
+        <div class="home-link">
+            <a href="index.html">← Back to Home</a>
+        </div>
+
+    </div>
+
 </div>
+
+<script>
+function togglePassword() {
+
+    const pass = document.getElementById("password");
+    const btn = document.querySelector(".toggle");
+
+    if (pass.type === "password") {
+        pass.type = "text";
+        btn.textContent = "Hide";
+    } else {
+        pass.type = "password";
+        btn.textContent = "Show";
+    }
+}
+</script>
 
 </body>
 </html>
