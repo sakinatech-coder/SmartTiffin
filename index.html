@@ -139,7 +139,9 @@ body{margin:0;background:#f8f7ef;color:#1d2a26;font-family:Arial,sans-serif}
     <a href="#about">About</a>
     <a href="#popular">Menu</a>
     <a href="#contact">Contact</a>
-    <a href="login.html">Login</a>
+    <span id="userWelcome"></span>
+    <a href="login.html" id="loginLink">Login</a>
+    <a href="#" id="logoutLink" style="display:none;">Logout</a>
   </nav>
 </header>
 
@@ -515,5 +517,27 @@ We connect you with trusted local tiffin providers who prepare fresh, tasty, and
 </section>
 
 <script src="js/script.js"></script>
+ <script>
+if (sessionStorage.getItem("smartTiffinLoggedIn") !== "true") {
+    window.location.replace("login.html");
+} else {
+    const user = sessionStorage.getItem("smartTiffinUser");
+
+    document.getElementById("userWelcome").textContent =
+        "Welcome, " + (user || "User");
+
+    document.getElementById("loginLink").style.display = "none";
+    document.getElementById("logoutLink").style.display = "inline";
+}
+
+document.getElementById("logoutLink").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    sessionStorage.removeItem("smartTiffinLoggedIn");
+    sessionStorage.removeItem("smartTiffinUser");
+
+    window.location.replace("login.html");
+});
+ </script>
 </body>
 </html>
