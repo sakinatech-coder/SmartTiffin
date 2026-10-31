@@ -69,15 +69,56 @@
   <label for="mobile">Mobile Number</label>
   <input id="mobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10-digit mobile number">
 
-  <label for="area">Select Your Area</label>
-  <select id="area">
-    <option value="">📍 Select Your Area</option>
-    <option>Garhshankar City</option>
-   <option>mahilpur</option>
-    <option>Garhshankar Bus Stand</option>
-    <option>Hoshiarpur Road</option>
-    <option>Nearby Villages</option>
-  </select>
+  <select id="location" name="location" required>
+    <option value="">📍 Select Location</option>
+
+    <!-- HOSHIARPUR NEARBY AREAS -->
+    <optgroup label="📍 Hoshiarpur & Nearby Areas">
+        <option>Hoshiarpur</option>
+        <option>Bajwara</option>
+        <option>Nasrala</option>
+        <option>Ajjowal</option>
+        <option>Mehngrowal</option>
+        <option>Hariana</option>
+        <option>Bhunga</option>
+        <option>Sham Chaurasi</option>
+    </optgroup>
+
+    <!-- HOSHIARPUR TO PHAGWARA VIA GNA -->
+    <optgroup label="🛣️ Hoshiarpur to Phagwara (GNA Route)">
+        <option>Hoshiarpur</option>
+        <option>Hariana</option>
+        <option>GNA University</option>
+        <option>Phagwara Bypass</option>
+     <option>Bhagwan Valmiki Chowk</option>
+        <option>Phagwara Bus Stand</option>
+        <option>Phagwara</option>
+    </optgroup>
+
+    <!-- HOSHIARPUR TO MAHILPUR -->
+    <optgroup label="🛣️ Hoshiarpur to Mahilpur Route">
+        <option>Hoshiarpur</option>
+        <option>Chabbewal</option>
+        <option>Riyat-Bahra College</option>
+        <option>Mahilpur</option>
+    </optgroup>
+
+    <!-- HOSHIARPUR TO GARHSHANKAR -->
+    <optgroup label="🛣️ Hoshiarpur to Garhshankar Route">
+        <option>Hoshiarpur</option>
+        <option>Chabbewal</option>
+     <option>Handowal Kalan / Handowal Khurd</option>
+     <option>Jatpur</option>
+     <option>Baghaura</option>
+     <option>Mahilpur</option>
+     <option>Dohlron</option>
+     <option>Langeri</option>
+        <option>Tutto majara</option>
+        <option>Saila Khurd</option>
+        <option>Garhshankar</option>
+    </optgroup>
+
+</select>
 
   <label for="address">Complete Delivery Address</label>
   <textarea id="address" placeholder="House number, street, village and landmark"></textarea>
