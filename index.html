@@ -148,16 +148,58 @@ body{margin:0;background:#f8f7ef;color:#1d2a26;font-family:Arial,sans-serif}
     <h1>Good Food, Brighter Days!</h1>
     <p>Fresh homemade meals from trusted local providers.</p>
     <div class="search-box">
-      <select id="location">
-        <option value="">📍 Select Location</option>
+      
+<select id="location" name="location" required>
+    <option value="">📍 Select Location</option>
+
+    <!-- HOSHIARPUR NEARBY AREAS -->
+    <optgroup label="📍 Hoshiarpur & Nearby Areas">
         <option>Hoshiarpur</option>
-        <option>Garhshankar</option>
-        <option>Mahilpur</option>
-        <option>Kot Fatuhi</option>
-        <option>Chabewal</option>
-        <option>Tuto Mazara</option>
+        <option>Bajwara</option>
+        <option>Nasrala</option>
+        <option>Ajjowal</option>
+        <option>Mehngrowal</option>
+        <option>Hariana</option>
+        <option>Bhunga</option>
+        <option>Sham Chaurasi</option>
+    </optgroup>
+
+    <!-- HOSHIARPUR TO PHAGWARA VIA GNA -->
+    <optgroup label="🛣️ Hoshiarpur to Phagwara (GNA Route)">
+        <option>Hoshiarpur</option>
+        <option>Hariana</option>
+        <option>GNA University</option>
+        <option>Phagwara Bypass</option>
+     <option>Bhagwan Valmiki Chowk</option>
+        <option>Phagwara Bus Stand</option>
         <option>Phagwara</option>
-      </select>
+    </optgroup>
+
+    <!-- HOSHIARPUR TO MAHILPUR -->
+    <optgroup label="🛣️ Hoshiarpur to Mahilpur Route">
+        <option>Hoshiarpur</option>
+        <option>Chabbewal</option>
+        <option>Riyat-Bahra College</option>
+        <option>Mahilpur</option>
+    </optgroup>
+
+    <!-- HOSHIARPUR TO GARHSHANKAR -->
+    <optgroup label="🛣️ Hoshiarpur to Garhshankar Route">
+        <option>Hoshiarpur</option>
+        <option>Chabbewal</option>
+     <option>Handowal Kalan / Handowal Khurd</option>
+     <option>Jatpur</option>
+     <option>Baghaura</option>
+     <option>Mahilpur</option>
+     <option>Dohlron</option>
+     <option>Langeri</option>
+        <option>Tutto majara</option>
+        <option>Saila Khurd</option>
+        <option>Garhshankar</option>
+    </optgroup>
+
+</select>
+
       <select id="meal">
         <option>Veg</option>
         <option>Healthy</option>
