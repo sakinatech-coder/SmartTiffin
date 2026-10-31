@@ -1,129 +1,148 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account | SmartTiffin</title>
 
-<title>Register | SmartTiffin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f8f5ee;
     min-height: 100vh;
+    background: #f8f5ee;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 25px;
 }
 
-/* Main Container */
-.register-container {
+.container {
     width: 100%;
-    max-width: 950px;
-    display: flex;
+    max-width: 1000px;
+    min-height: 620px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
     background: white;
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+    box-shadow: 0 18px 55px rgba(15, 90, 71, 0.13);
 }
 
-/* Left Side */
-.register-left {
-    width: 42%;
-    background: linear-gradient(145deg, #0f5a47, #073c32);
+/* LEFT PANEL */
+.welcome-panel {
+    background: linear-gradient(145deg, #0f5a47, #073d32);
     color: white;
-    padding: 45px 30px;
+    padding: 55px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-panel::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    right: -100px;
+    top: -80px;
 }
 
 .logo {
-    font-size: 48px;
-    margin-bottom: 15px;
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 35px;
 }
 
-.register-left h1 {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.register-left h1 span {
+.logo span {
     color: #f4a21d;
 }
 
-.register-left p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #e5eee9;
+.welcome-panel h1 {
+    font-size: 32px;
+    line-height: 1.35;
+    margin-bottom: 18px;
 }
 
-.food-icon {
-    font-size: 55px;
-    margin: 35px 0;
+.welcome-panel h1 span {
+    color: #f4a21d;
+}
+
+.welcome-panel p {
+    color: #e2eee9;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.food-icons {
+    font-size: 35px;
+    margin-top: 35px;
+    letter-spacing: 8px;
 }
 
 .tagline {
-    color: #ffc45b;
-    font-size: 16px;
-    font-weight: bold;
+    margin-top: 35px;
+    color: #f4a21d;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-/* Right Side */
-.register-right {
-    width: 58%;
-    padding: 40px 50px;
+/* RIGHT PANEL */
+.form-panel {
+    padding: 45px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.register-right h2 {
-    font-size: 29px;
+.form-panel h2 {
     color: #0f5a47;
+    font-size: 28px;
     margin-bottom: 8px;
 }
 
 .subtitle {
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 25px;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 28px;
 }
 
-/* Inputs */
 .input-group {
     margin-bottom: 17px;
 }
 
 .input-group label {
     display: block;
-    color: #333;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
+    color: #333;
     margin-bottom: 7px;
 }
 
 .input-group input {
     width: 100%;
     padding: 13px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #e2e5e1;
     border-radius: 10px;
-    font-size: 15px;
     outline: none;
-    background: #fafafa;
+    font-size: 13px;
+    background: #fbfcfa;
     transition: 0.3s;
 }
 
 .input-group input:focus {
     border-color: #0f5a47;
-    background: white;
     box-shadow: 0 0 0 3px rgba(15,90,71,0.08);
 }
 
@@ -140,25 +159,25 @@ body {
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    background: none;
     border: none;
+    background: transparent;
     color: #0f5a47;
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: 700;
     cursor: pointer;
 }
 
-/* Button */
 .register-btn {
     width: 100%;
-    padding: 15px;
+    padding: 14px;
+    margin-top: 8px;
     background: #0f5a47;
     color: white;
     border: none;
     border-radius: 10px;
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 8px;
     transition: 0.3s;
 }
 
@@ -168,82 +187,66 @@ body {
     transform: translateY(-2px);
 }
 
-/* Login Link */
 .login-link {
     text-align: center;
-    margin-top: 22px;
-    color: #666;
-    font-size: 14px;
+    margin-top: 23px;
+    font-size: 13px;
+    color: #777;
 }
 
-.login-link a {
+.login-link a,
+.home-link a {
     color: #0f5a47;
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
 }
 
-.login-link a:hover {
+.login-link a:hover,
+.home-link a:hover {
     color: #f4a21d;
 }
 
 .home-link {
     text-align: center;
-    margin-top: 17px;
+    margin-top: 20px;
+    font-size: 13px;
 }
 
-.home-link a {
-    color: #777;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* Mobile Responsive */
-@media(max-width: 650px) {
-
+@media(max-width: 750px) {
     body {
         padding: 15px;
     }
 
-    .register-container {
-        max-width: 420px;
-        flex-direction: column;
-        border-radius: 20px;
+    .container {
+        grid-template-columns: 1fr;
+        max-width: 470px;
     }
 
-    .register-left {
-        width: 100%;
-        padding: 25px 20px;
+    .welcome-panel {
+        padding: 30px;
+        min-height: 260px;
     }
 
     .logo {
-        font-size: 32px;
-        margin-bottom: 7px;
+        font-size: 27px;
+        margin-bottom: 18px;
     }
 
-    .register-left h1 {
+    .welcome-panel h1 {
         font-size: 25px;
     }
 
-    .register-left p {
-        font-size: 13px;
-    }
-
-    .food-icon {
-        font-size: 35px;
-        margin: 10px 0;
+    .food-icons {
+        margin-top: 18px;
+        font-size: 27px;
     }
 
     .tagline {
-        font-size: 14px;
+        margin-top: 15px;
     }
 
-    .register-right {
-        width: 100%;
-        padding: 28px 23px;
-    }
-
-    .register-right h2 {
-        font-size: 25px;
+    .form-panel {
+        padding: 35px 25px;
     }
 }
 </style>
@@ -251,22 +254,24 @@ body {
 
 <body>
 
-<div class="register-container">
+<div class="container">
 
-    <!-- Welcome Section -->
-    <div class="register-left">
+    <!-- LEFT WELCOME PANEL -->
+    <div class="welcome-panel">
 
-        <div class="logo">🍱</div>
+        <div class="logo">🍱 Smart<span>Tiffin</span></div>
 
-        <h1>Smart<span>Tiffin</span></h1>
+        <h1>Fresh Food.<br>
+        <span>Happy Life!</span></h1>
 
         <p>
-            Join SmartTiffin and enjoy
-            fresh homemade meals from
-            trusted local food providers.
+            Enjoy fresh, hygienic and delicious homemade meals.
+            Bring the taste of home closer to you with SmartTiffin.
         </p>
 
-        <div class="food-icon">🥗 🍛 🥘</div>
+        <div class="food-icons">
+            🍛 🥗 🥘 🍱
+        </div>
 
         <div class="tagline">
             Ghar ka khaana, sehat ka khazaana!
@@ -274,16 +279,17 @@ body {
 
     </div>
 
-    <!-- Registration Form -->
-    <div class="register-right">
 
-        <h2>Create Account ✨</h2>
+    <!-- RIGHT REGISTRATION FORM -->
+    <div class="form-panel">
+
+        <h2>Create Account</h2>
 
         <p class="subtitle">
-            Sign up to enjoy delicious homemade food.
+            Join SmartTiffin and enjoy homemade food.
         </p>
 
-        <form action="customer/dashboard.html" method="get">
+        <form id="registerForm">
 
             <div class="input-group">
                 <label>Full Name</label>
@@ -299,7 +305,7 @@ body {
                 <input
                     type="tel"
                     name="mobile"
-                    placeholder="Enter 10-digit mobile number"
+                    placeholder="Enter your mobile number"
                     pattern="[0-9]{10}"
                     maxlength="10"
                     required>
@@ -354,9 +360,9 @@ body {
 
 </div>
 
+
 <script>
 function togglePassword() {
-
     const pass = document.getElementById("password");
     const btn = document.querySelector(".toggle");
 
@@ -368,6 +374,31 @@ function togglePassword() {
         btn.textContent = "Show";
     }
 }
+
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.querySelector('[name="fullname"]').value.trim();
+    const mobile = document.querySelector('[name="mobile"]').value.trim();
+    const email = document.querySelector('[name="email"]').value.trim().toLowerCase();
+    const password = document.querySelector('[name="password"]').value;
+
+    const account = {
+        name: name,
+        mobile: mobile,
+        email: email,
+        password: password
+    };
+
+    localStorage.setItem("smartTiffinAccount", JSON.stringify(account));
+
+    sessionStorage.setItem("smartTiffinLoggedIn", "true");
+    sessionStorage.setItem("smartTiffinUser", name);
+
+    alert("Account created successfully! Welcome to SmartTiffin.");
+
+    window.location.href = "index.html";
+});
 </script>
 
 </body>
