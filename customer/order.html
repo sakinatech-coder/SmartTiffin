@@ -69,6 +69,7 @@
   <label for="mobile">Mobile Number</label>
   <input id="mobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10-digit mobile number">
 
+  <label for="location">Delivery Area</label>
   <select id="location" name="location" required>
     <option value="">📍 Select Location</option>
 
@@ -90,7 +91,7 @@
         <option>Hariana</option>
         <option>GNA University</option>
         <option>Phagwara Bypass</option>
-     <option>Bhagwan Valmiki Chowk</option>
+        <option>Bhagwan Valmiki Chowk</option>
         <option>Phagwara Bus Stand</option>
         <option>Phagwara</option>
     </optgroup>
@@ -107,18 +108,17 @@
     <optgroup label="🛣️ Hoshiarpur to Garhshankar Route">
         <option>Hoshiarpur</option>
         <option>Chabbewal</option>
-     <option>Handowal Kalan / Handowal Khurd</option>
-     <option>Jatpur</option>
-     <option>Baghaura</option>
-     <option>Mahilpur</option>
-     <option>Dohlron</option>
-     <option>Langeri</option>
+        <option>Handowal Kalan / Handowal Khurd</option>
+        <option>Jatpur</option>
+        <option>Baghaura</option>
+        <option>Mahilpur</option>
+        <option>Dohlron</option>
+        <option>Langeri</option>
         <option>Tutto majara</option>
         <option>Saila Khurd</option>
         <option>Garhshankar</option>
     </optgroup>
-
-</select>
+  </select>
 
   <label for="address">Complete Delivery Address</label>
   <textarea id="address" placeholder="House number, street, village and landmark"></textarea>
@@ -233,7 +233,7 @@
     const meal = mealSelect.value;
     const name = $("name").value.trim();
     const mobile = $("mobile").value.trim();
-    const area = $("area").value;
+    const area = $("location").value;          // <-- FIX: pehla $("area") si, ho gaya $("location")
     const address = $("address").value.trim();
 
     if (!meal) return show("Pehla koi meal select karo.", false);
@@ -244,7 +244,7 @@
 
     const qty = $("qty").value;
     const total = priceOf(meal) * qty;
-    show("✅ <b>Order confirmed (demo)!</b><br>" + name + ", tuhada order: " +
+    show("✅ <b>Order placed successfully!</b><br>" + name + ", tuhada order: " +
          qty + " × " + meal + "<br>Total: <b>₹" + total + "</b><br>Area: " + area, true);
   });
 
