@@ -354,26 +354,37 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value;
 
-    const account = JSON.parse(localStorage.getItem("smartTiffinAccount"));
+    // Load all saved accounts
+    let users = JSON.parse(localStorage.getItem("smartTiffinUsers")) || [];
 
-    if (!account) {
+    // One-time move of the old single account into the list
+    const oldAccount = JSON.parse(localStorage.getItem("smartTiffinAccount"));
+    if (oldAccount && !users.some(u => u.email === oldAccount.email)) {
+        users.push(oldAccount);
+        localStorage.setItem("smartTiffinUsers", JSON.stringify(users));
+    }
+
+    if (users.length === 0) {
         alert("Please create an account first!");
         window.location.href = "register.html";
         return;
     }
 
-    if (email === account.email && password === account.password) {
+    const account = users.find(u => u.email === email && u.password === password);
+
+    if (account) {
+        // Keep the old key updated so other pages keep working
+        localStorage.setItem("smartTiffinAccount", JSON.stringify(account));
+
         sessionStorage.setItem("smartTiffinLoggedIn", "true");
         sessionStorage.setItem("smartTiffinUser", account.name);
 
         alert("Login successful! Welcome to SmartTiffin.");
-
         window.location.href = "index.html";
     } else {
         alert("Incorrect email or password. Please try again.");
     }
 });
 </script>
-
 </body>
 </html>
