@@ -383,6 +383,23 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
     const email = document.querySelector('[name="email"]').value.trim().toLowerCase();
     const password = document.querySelector('[name="password"]').value;
 
+    // Load all saved accounts
+    let users = JSON.parse(localStorage.getItem("smartTiffinUsers")) || [];
+
+    // One-time move of the old single account into the list
+    const oldAccount = JSON.parse(localStorage.getItem("smartTiffinAccount"));
+    if (oldAccount && !users.some(u => u.email === oldAccount.email)) {
+        users.push(oldAccount);
+    }
+
+    // Do not create the same email twice
+    if (users.some(u => u.email === email)) {
+        localStorage.setItem("smartTiffinUsers", JSON.stringify(users));
+        alert("This email is already registered. Please login.");
+        window.location.href = "login.html";
+        return;
+    }
+
     const account = {
         name: name,
         mobile: mobile,
@@ -390,6 +407,10 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
         password: password
     };
 
+    users.push(account);
+    localStorage.setItem("smartTiffinUsers", JSON.stringify(users));
+
+    // Keep the old key updated so other pages keep working
     localStorage.setItem("smartTiffinAccount", JSON.stringify(account));
 
     sessionStorage.setItem("smartTiffinLoggedIn", "true");
@@ -400,6 +421,5 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
     window.location.href = "index.html";
 });
 </script>
-
 </body>
 </html>
