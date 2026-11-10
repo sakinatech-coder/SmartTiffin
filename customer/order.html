@@ -236,12 +236,12 @@
     const area = $("location").value;          // <-- FIX: pehla $("area") si, ho gaya $("location")
     const address = $("address").value.trim();
 
-    if (!meal) return show("Pehla koi meal select karo.", false);
-    if (name.length < 2) return show("Apna poora naam likho.", false);
-    if (!/^[6-9]\d{9}$/.test(mobile)) return show("Sahi 10-digit mobile number paao.", false);
-    if (!area) return show("Apna area select karo.", false);
-    if (address.length < 8) return show("Poora delivery address likho.", false);
-
+    if (!meal) return show("Please select a meal first.", false);
+    if (name.length < 2) return show("Please enter your full name.", false);
+    if (!/^[6-9]\d{9}$/.test(mobile)) return show("Please enter a valid 10-digit mobile number.", false);
+     
+    if (!area) return show("Please select your delivery area.", false);
+    if (address.length < 8) return show("Please enter your complete delivery address.", false);
     const qty = $("qty").value;
     const total = priceOf(meal) * qty;
     show("✅ <b>Order placed successfully!</b><br>" + name + ", Your order: " +
